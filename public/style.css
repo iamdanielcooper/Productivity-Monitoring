@@ -1,0 +1,134 @@
+body {
+  background-color: rgb(218, 218, 218);
+  font-family: "Cutive Mono", monospace;
+}
+#main {
+  background-color: rgb(255, 255, 255);
+
+  width: 80vw;
+  height: auto;
+
+  margin: auto;
+  padding: 40px;
+
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+}
+
+#userSubmit {
+  width: 80vw;
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+#header {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.buttons {
+  width: 200px;
+  height: 60px;
+  background-color: rgb(227, 243, 246);
+  margin: 10px;
+  margin-bottom: 50px;
+}
+.buttonLabels {
+  position: relative;
+  top: -170px;
+  text-align: center;
+}
+.value {
+  text-align: center;
+  font-size: 40px;
+  position: relative;
+  top: -150px;
+}
+#leadtimeDisplay {
+  text-align: center;
+}
+#leadtimeContainer {
+  display: flex;
+  width: 60vw;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 0px;
+}
+.leadtime {
+  position: relative;
+  top: 0px;
+}
+.minusButton {
+  width: 100px;
+  height: 60px;
+  background-color: rgb(0, 160, 175);
+  position: relative;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  z-index: 10;
+}
+.minusButton:hover {
+  opacity: 0.1;
+}
+.plusButton {
+  width: 100px;
+  height: 60px;
+  background-color: rgb(0, 160, 175);
+  position: relative;
+  top: -60px;
+  left: 100px;
+  opacity: 0;
+  z-index: 10;
+}
+.plusButton:hover {
+  opacity: 0.1;
+}
+
+.footer {
+  margin-top: 20px;
+}
+#userSubmit {
+  margin-top: 20px;
+}
+button {
+  width: 60vw;
+  height: 45px;
+  border-style: none;
+}
+select {
+  width: 60vw;
+  height: 35px;
+}
+
+@media only screen and (max-width: 600px) {
+  .buttons {
+    width: 80vw;
+    height: 60px;
+    background-color: rgb(227, 243, 246);
+  }
+  #main {
+    background-color: rgb(255, 255, 255);
+
+    width: 80vw;
+    height: auto;
+
+    display: inline-flex;
+
+    justify-content: space-between;
+  }
+  .buttonLabels {
+    position: relative;
+    top: -170px;
+    text-align: center;
+    font-size: 18px;
+  }
+  button {
+    width: 80vw;
+    height: 45px;
+  }
+}
