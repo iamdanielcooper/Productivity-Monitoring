@@ -131,4 +131,14 @@ select {
     width: 80vw;
     height: 45px;
   }
+  .plusButton {
+    width: 40vw;
+    height: 60px;
+    background-color: rgb(0, 160, 175);
+    position: relative;
+    top: -60px;
+    left: 120vw
+    opacity: 0;
+    z-index: 10;
+  }
 }
