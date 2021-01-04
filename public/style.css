@@ -142,3 +142,8 @@ select {
     z-index: 10;
   }
 }
+
+#myChart {
+  width: 80vw;
+  height: 200px;
+}

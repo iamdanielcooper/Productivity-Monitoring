@@ -5,22 +5,20 @@ const output = {};
 // fill this Object with all the holidays for the next year and it will also take those into account when processing the despatch date.
 
 const holidays = {
-    xmascutoff: '22/12',
-    boxingDay: '24/12',
-    christmas: '25/12',
-    christmasBreak: '28/12',
-    christmasBreak2: '29/12',
-    christmasBreak3: '30/12',
-    christmasBreak5: '31/12',
-    newYearsDay: '1/1',
-    
-}
+  xmascutoff: "22/12",
+  boxingDay: "24/12",
+  christmas: "25/12",
+  christmasBreak: "28/12",
+  christmasBreak2: "29/12",
+  christmasBreak3: "30/12",
+  christmasBreak5: "31/12",
+  newYearsDay: "1/1",
+};
 
 // these update the dispatch dates. put the number of days as the argument
-document.getElementById('fiveDays').innerHTML = getCurrentDateDDMM(5)
-document.getElementById('sevenDays').innerHTML = getCurrentDateDDMM(7)
-document.getElementById('tenDays').innerHTML = getCurrentDateDDMM(10)
-
+document.getElementById("fiveDays").innerHTML = getCurrentDateDDMM(5);
+document.getElementById("sevenDays").innerHTML = getCurrentDateDDMM(7);
+document.getElementById("tenDays").innerHTML = getCurrentDateDDMM(10);
 
 // element is the dom reference and modifier is wether the button is plus or minus
 function logWorkDone(element, modifier) {
@@ -57,9 +55,33 @@ function submit() {
     console.log("error: No Name Selected");
     alert("Please Select Name and Submit Again");
     return;
+  } else {
+    //  Add user to the output object
+    output.user = docRef.value
   }
+  // add date to the object
+let now = new Date()
+let months = now.getMonth() + 1
+let day = now.getDate()
+let year = now.getFullYear()
 
-  // TODO ADD A POST TO THE DATABASE.
+console.log(`${day}/${months}/${year}`)
+
+output.date = `${day}/${months}/${year}`
+
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body:  JSON.stringify(output)
+  };
+
+  // 
+  console.log(JSON.stringify(output))
+  fetch("/api", options);
+  console.log("Success");
 }
 
 // This function abstracts away processing the current dispatch date. It takes one argument, a number of working days for dispatch. No need to account for weekends or holidays, this function takes those into account and returns the correct dispatch date.
