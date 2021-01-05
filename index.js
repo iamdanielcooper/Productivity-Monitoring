@@ -16,14 +16,23 @@ app.listen(port, () => {
 
 app.use(express.static('public'))
 
+/*
 app.get('/new', (request, response) => {
     proofDatabase.find({}, (err, data) => {
         response.send(data)
     })
 })
-
+*/
 app.post('/api', (request, response) => {
     const data = request.body
     proofDatabase.insert(data)
     console.log(data)
 });
+
+app.post('/find', (request, response) => {
+   let info = request.body
+    proofDatabase.find(request.body, (err, docs) => {
+        response.json(docs)
+
+    })
+})

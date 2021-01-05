@@ -13,7 +13,17 @@
 <body>
     <a href="http://localhost:4000/">Data Input Page</a>
 
-    <p id="loadedDatar"></p>
+    <div id="buttonContainer">
+        <select id="users">
+            <option value="">All</option>
+            <option value="Dan">Dan</option>
+            <option value="Bex">Bex</option>
+            <option value="Ben">Ben</option>
+            <option value="Ollie">Ollie</option>
+        </select>
+        <select id="toggleView"></select>
+        <input  id="date" type="date">
+    </div>
 
     <button id="loadData" onclick="getData()">Get It Boooooy</button>
 

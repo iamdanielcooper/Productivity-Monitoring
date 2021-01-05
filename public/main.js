@@ -65,9 +65,15 @@ let months = now.getMonth() + 1
 let day = now.getDate()
 let year = now.getFullYear()
 
-console.log(`${day}/${months}/${year}`)
+if (day < 10) {
+  day = '0' + day
+}
+if (months < 10) {
+  months = '0' + months
+}
 
-output.date = `${day}/${months}/${year}`
+// final string formatting. this formatting matches how the HTML date input date displays.
+output.date = `${year}-${months}-${day}`
 
 
   const options = {
