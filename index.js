@@ -31,7 +31,7 @@ app.post('/api', (request, response) => {
 
 app.post('/find', (request, response) => {
    let info = request.body
-    proofDatabase.find(request.body, (err, docs) => {
+    proofDatabase.find(info, (err, docs) => {
         response.json(docs)
 
     })

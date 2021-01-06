@@ -23,12 +23,22 @@ async function getData() {
   const data = await response.json();
 
   console.log(data);
+  console.log(Object.values(data[0]))
+
+  let recived = Object.values(data[0])
+  let graphData = []
+
+  for (let i = 0; i < recived.length; i++) {
+    if(recived[i] != NaN || recived[i] != undefined) {
+      graphData.push(recived[i])
+    }    
+  }
 
   // load graph
   var ctx = document.getElementById("myChart");
 
-  var stars = [12, 23, 5];
-  var frameworks = ["one", "two", "three"];
+  var stars = graphData
+  var frameworks = Object.keys(data[0]);
 
   var myChart = new Chart(ctx, {
     type: "doughnut",
@@ -53,4 +63,11 @@ async function getData() {
       responsive: false,
     },
   });
+}
+
+
+function parseProofData(inputArr) {
+  for (let i = 0; i < inputArr.length; i++) {
+    inputArr[i]
+  }
 }
