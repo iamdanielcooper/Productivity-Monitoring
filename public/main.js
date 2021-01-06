@@ -1,7 +1,16 @@
 console.log("listening");
 
 //! make full output object here so when parsing the data 
-const output = {};
+const output = {
+  proofs: 0,
+  reproofs: 0,
+  multipage: 0,
+  multipageReproof: 0,
+  visuals: 0,
+  visualReproof: 0,
+  outputs: 0,
+  other: 0,
+};
 
 // fill this Object with all the holidays for the next year and it will also take those into account when processing the despatch date.
 

@@ -1,7 +1,3 @@
-console.log("linked");
-
-//const Chart = require('chart.js')
-
 async function getData() {
   const search = {};
 
@@ -23,6 +19,7 @@ async function getData() {
 
   let danData, bexData, benData, ollieData
 
+  // Parse the data by name
   for (let i = 0; i < data.length; i++) {
     
       switch (data[i].user) {
@@ -43,8 +40,6 @@ async function getData() {
           break;
       }
   }
-
-  console.log(danData,benData,bexData,ollieData)
 
   // load graph
   var ctx = document.getElementById("myChart");
@@ -108,6 +103,13 @@ async function getData() {
     },
     options: {
       responsive: false,
+      scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }
+        ]}
     },
   });
 }
@@ -126,3 +128,23 @@ function processUserData(data, index) {
 
 return output
 }
+
+function setDefaultDate() {
+let now = new Date()
+let months = now.getMonth() + 1
+let day = now.getDate()
+let year = now.getFullYear()
+
+if (day < 10) {
+  day = '0' + day
+}
+if (months < 10) {
+  months = '0' + months
+}
+
+
+// final string formatting. this formatting matches how the HTML date input date displays.
+document.getElementById('date').defaultValue = `${year}-${months}-${day}`
+}
+
+setDefaultDate()
