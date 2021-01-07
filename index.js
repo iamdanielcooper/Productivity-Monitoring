@@ -23,7 +23,7 @@ app.get('/new', (request, response) => {
     })
 })
 */
-app.post('api', (request, response) => {
+app.post('/api', (request, response) => {
     const search = {}
     const data = request.body
 
@@ -53,7 +53,7 @@ app.post('api', (request, response) => {
     
 });
 
-app.post('find', (request, response) => {
+app.post('/find', (request, response) => {
    let info = request.body
     proofDatabase.find(info, (err, docs) => {
         response.json(docs)
