@@ -6,12 +6,12 @@ const app = express()
 const proofDatabase = new Database('proofData.db')
 proofDatabase.loadDatabase()
 
-const port = process.env.PORT
+
 
 app.use(express.json());
 
-app.listen(port, () => {
-    console.log(`listening on port ${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`listening`)
 })
 
 app.use(express.static('public'))
