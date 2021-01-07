@@ -1,6 +1,9 @@
 async function getData() {
+
+  // this object is declared and passed to the server to search the database
   const search = {};
 
+  // IF a user has been specified it adds them to the search queery. If not it just adds the date.
   if (document.getElementById("users").value != "") {
     search.user = document.getElementById("users").value;
   }
@@ -17,23 +20,21 @@ async function getData() {
   const response = await fetch("/find", options);
   const data = await response.json();
 
-  let danData, bexData, benData, ollieData
-
   // Parse the data by name
   for (let i = 0; i < data.length; i++) {
     
       switch (data[i].user) {
         case "Dan":
-          danData = processUserData(data[i], i)
+          var danData = processUserData(data[i])
           break;
         case "Ben":
-          benData = processUserData(data[i], i)
+          var benData = processUserData(data[i])
           break;
         case "Ollie":
-          ollieData = processUserData(data[i], i)
+          var ollieData = processUserData(data[i])
           break;
         case "Bex":
-          bexData = processUserData(data[i], i)
+          var bexData = processUserData(data[i])
           break;
 
         default:
@@ -114,7 +115,10 @@ async function getData() {
   });
 }
 
-function processUserData(data, index) {
+//* Helper Functions
+
+// Returns the data in a uniform array that the graph can read.
+function processUserData(data) {
   let regexTest = /\D/g
   let output = []
   
@@ -129,6 +133,7 @@ function processUserData(data, index) {
 return output
 }
 
+// Gives the date selector todays date as default.
 function setDefaultDate() {
 let now = new Date()
 let months = now.getMonth() + 1
@@ -146,5 +151,10 @@ if (months < 10) {
 // final string formatting. this formatting matches how the HTML date input date displays.
 document.getElementById('date').defaultValue = `${year}-${months}-${day}`
 }
+
+
+
+
+
 
 setDefaultDate()
