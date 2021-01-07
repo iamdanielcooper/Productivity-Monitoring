@@ -200,10 +200,10 @@ function hideDataPullOnceUSed() {
   console.log('hidden')
 }
 
-/*
+
 function startLoadLogging() {
   console.log('data now live')
   var myVar
-  myvar = setInterval(submit, 10000) // this updates the data 
+  myvar = setInterval(submit, 30000) // this updates the data 
 }
-*/
+
