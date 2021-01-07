@@ -23,6 +23,13 @@ body {
   display: block;
   text-align: center;
 }
+#dataPull {
+  width: 80vw;
+  margin: auto;
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+}
 
 #header {
   margin-bottom: 40px;

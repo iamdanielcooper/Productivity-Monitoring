@@ -1,6 +1,3 @@
-console.log("listening");
-
-//! make full output object here so when parsing the data 
 const output = {
   proofs: 0,
   reproofs: 0,
@@ -131,4 +128,64 @@ function getCurrentDateDDMM(days) {
   month = outputDate.getMonth() + 1;
 
   return day + "/" + month;
+}
+
+async function getLoggedData() {
+  // this object is declared and passed to the server to search the database
+  const search = {};
+
+  if (document.getElementById("dataPullSelect").value == '') {
+    console.log('Error, No Data Requested')
+    return
+  }
+
+  // the date used for this is always the current date.
+  search.user = document.getElementById("dataPullSelect").value;
+  search.date = getDate();
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(search),
+  };
+
+  //get the data from the server based on the search criteria.
+  const response = await fetch("/find", options);
+  const data = await response.json();
+  const parsedData = data[0]
+
+  if (parsedData == undefined) {
+    console.log('Err: No Data Found')
+    return
+  }
+
+  //update the DOM with the data from the database
+  document.getElementById('proofs').innerText = parsedData.proofs
+  document.getElementById('reproofs').innerText = parsedData.reproofs
+  document.getElementById('multipage').innerText = parsedData.multipage
+  document.getElementById('multipageReproof').innerText = parsedData.multipageReproof
+  document.getElementById('visuals').innerText = parsedData.visuals
+  document.getElementById('visualReproof').innerText = parsedData.visualReproof
+  document.getElementById('outputs').innerText = parsedData.outputs
+  document.getElementById('other').innerText = parsedData.other
+
+}
+
+function getDate() {
+  let now = new Date()
+  let months = now.getMonth() + 1
+  let day = now.getDate()
+  let year = now.getFullYear()
+
+  if (day < 10) {
+    day = '0' + day
+  }
+  if (months < 10) {
+    months = '0' + months
+  }
+
+  // final string formatting. this formatting matches how the HTML date input date displays.
+  return `${year}-${months}-${day}`
 }
