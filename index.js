@@ -6,7 +6,7 @@ const app = express()
 const proofDatabase = new Database('proofData.db')
 proofDatabase.loadDatabase()
 
-const port = 4000
+const port = 1000
 
 app.use(express.json());
 
@@ -24,16 +24,32 @@ app.get('/new', (request, response) => {
 })
 */
 app.post('/api', (request, response) => {
+    const search = {}
     const data = request.body
-    console.log (data.hasBeenPulled)
-    //! instead maybe always search for it. If we dont get a result instert it.
-    // if it's been pulled update the entry.
-    if (data.hasBeenPulled) {
-        console.log('this data needs to be replaced')
-    } else { // otherwise add it as a new entry
-        proofDatabase.insert(data)
-        console.log(data)
-    }
+
+    search.date = data.date
+    search.user = data.user
+
+    console.log(search)
+
+    proofDatabase.find(search, (err, docs) => {
+        console.log(docs)
+        if (docs.length != 0) { // if exists already
+            console.log('this data needs to be replaced')
+            proofDatabase.remove(search, {}, (err, numRemoved) => { // remove the old one
+                console.log(`${numRemoved} items removed`)
+            })
+            proofDatabase.insert(data) // add the new one
+            console.log(data)
+            
+        } else { 
+            proofDatabase.insert(data)
+            console.log(data)
+        }
+        
+    })
+    
+    
     
 });
 
