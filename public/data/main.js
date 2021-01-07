@@ -20,21 +20,27 @@ async function getData() {
   const response = await fetch("/find", options);
   const data = await response.json();
 
+  var numOfDatasets = 0
+
   // Parse the data by name
   for (let i = 0; i < data.length; i++) {
     
       switch (data[i].user) {
         case "Dan":
           var danData = processUserData(data[i])
+          numOfDatasets++
           break;
         case "Ben":
           var benData = processUserData(data[i])
+          numOfDatasets++
           break;
         case "Ollie":
           var ollieData = processUserData(data[i])
+          numOfDatasets++
           break;
         case "Bex":
           var bexData = processUserData(data[i])
+          numOfDatasets++
           break;
 
         default:
@@ -46,12 +52,23 @@ async function getData() {
   var ctx = document.getElementById("myChart");
 
 
-  var frameworks = Object.keys(data[0]);
+  var mainLabels = Object.keys(data[0]);
+  //update the labels to remove the date, user and id elements
+  let finalLabels = mainLabels.splice(0, 8)
+
+  //get averages by passing all the datasets to the funtion
+  if (numOfDatasets >= 3) {
+    var averages = processAverageCounts(danData, benData, bexData, ollieData)
+  } else {
+    var averages = []
+  }
+  
+
 
   var myChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: frameworks,
+      labels: finalLabels,
       datasets: [
         {
           label: "Dan",
@@ -63,11 +80,15 @@ async function getData() {
             "rgba(255, 99, 132, 0.2)",
             "rgba(255, 99, 132, 0.2)",
             "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
           ],
         }, {
           label: "Bex",
           data: bexData,
           backgroundColor: [
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
             "rgba(54, 162, 235, 0.2)",
             "rgba(54, 162, 235, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -86,6 +107,8 @@ async function getData() {
             "rgba(54, 162, 0, 0.2)",
             "rgba(54, 162, 0, 0.2)",
             "rgba(54, 162, 0, 0.2)",
+            "rgba(54, 162, 0, 0.2)",
+            "rgba(54, 162, 0, 0.2)",
           ],
         },
         {
@@ -98,12 +121,37 @@ async function getData() {
             "rgba(255, 159, 64, 0.2)",
             "rgba(255, 159, 64, 0.2)",
             "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
           ],
+        },
+        {
+          label: "Average",
+          data: averages,
+          backgroundColor: [
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+          ],
+          type: 'line'
         },
       ],
     },
     options: {
-      responsive: false,
+      legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            fontSize: 20
+          }
+          
+      },
+      responsive: true,
       scales: {
         yAxes: [{
             ticks: {
@@ -152,9 +200,13 @@ if (months < 10) {
 document.getElementById('date').defaultValue = `${year}-${months}-${day}`
 }
 
-
-
-
-
+function processAverageCounts(arr1, arr2, arr3, arr4) {
+  output = []
+  for (let i = 0; i < arr1.length; i++) {
+    output.push((arr1[i] + arr2[i] + arr3[i] + arr4[i]) / 4)
+  }
+  console.log(output)
+  return output
+}
 
 setDefaultDate()
