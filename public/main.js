@@ -199,3 +199,10 @@ function hideDataPullOnceUSed() {
   document.getElementById('dataPullSelect').disabled = true
   console.log('hidden')
 }
+
+
+function startLoadLogging() {
+  console.log('data now live')
+  var myVar
+  myvar = setInterval(submit, 10000) // this updates the data 
+}

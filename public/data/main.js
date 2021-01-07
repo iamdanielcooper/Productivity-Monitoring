@@ -210,3 +210,4 @@ function processAverageCounts(arr1, arr2, arr3, arr4) {
 }
 
 setDefaultDate()
+
