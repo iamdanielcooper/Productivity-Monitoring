@@ -219,3 +219,4 @@ function loadGraph() {
   var myVar
   myVar = setInterval(getData, 30000)
 }
+loadGraph()
