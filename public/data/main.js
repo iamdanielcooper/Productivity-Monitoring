@@ -151,7 +151,7 @@ async function getData() {
           }
           
       },
-      responsive: true,
+      responsive: false,
       scales: {
         yAxes: [{
             ticks: {
@@ -215,8 +215,4 @@ function processAverageCounts(arr1, arr2, arr3, arr4) {
 
 setDefaultDate()
 
-function loadGraph() {
-  var myVar
-  myVar = setInterval(getData, 30000)
-}
-loadGraph()
+
