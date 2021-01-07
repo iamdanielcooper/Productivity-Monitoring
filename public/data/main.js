@@ -222,7 +222,7 @@ function refreshPage() {
 function startLoadLogging() {
   console.log('data now live')
   var myVar
-  myvar = setInterval(refreshPage, 10000) 
+  myvar = setInterval(refreshPage, 100000) 
   
   getData()// this updates the data 
 }
