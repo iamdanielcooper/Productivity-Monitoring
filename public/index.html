@@ -105,14 +105,15 @@
             <button type="submit" class="footer" onclick="submit()">Submit</button>
         </div>
 
-        <div id="dataPull">
-            <select id="dataPullSelect">
+        <div id="dataPull" onchange="getLoggedData()">
+            <select id="dataPullSelect" onchange="hideDataPullOnceUSed()">
+                <option value="" disabled=true selected=true>Load Your Data</option>
                 <option value="Dan">Dan</option>
                 <option value="Bex">Bex</option>
                 <option value="Ben">Ben</option>
                 <option value="Ollie">Ollie</option>
             </select>
-            <button id="submitDataPull" onclick="getLoggedData()">Get Your Logged Data</button>
+            
         </div>
 
         <div>

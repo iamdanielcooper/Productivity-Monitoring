@@ -194,3 +194,8 @@ function getDate() {
   // final string formatting. this formatting matches how the HTML date input date displays.
   return `${year}-${months}-${day}`
 }
+
+function hideDataPullOnceUSed() {
+  document.getElementById('dataPullSelect').disabled = true
+  console.log('hidden')
+}
