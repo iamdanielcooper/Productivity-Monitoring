@@ -25,8 +25,16 @@ app.get('/new', (request, response) => {
 */
 app.post('/api', (request, response) => {
     const data = request.body
-    proofDatabase.insert(data)
-    console.log(data)
+    console.log (data.hasBeenPulled)
+    //! instead maybe always search for it. If we dont get a result instert it.
+    // if it's been pulled update the entry.
+    if (data.hasBeenPulled) {
+        console.log('this data needs to be replaced')
+    } else { // otherwise add it as a new entry
+        proofDatabase.insert(data)
+        console.log(data)
+    }
+    
 });
 
 app.post('/find', (request, response) => {

@@ -9,6 +9,8 @@ const output = {
   other: 0,
 };
 
+var datapulled = false
+
 // fill this Object with all the holidays for the next year and it will also take those into account when processing the despatch date.
 
 const holidays = {
@@ -82,6 +84,10 @@ if (months < 10) {
 // final string formatting. this formatting matches how the HTML date input date displays.
 output.date = `${year}-${months}-${day}`
 
+
+// TODO change the serverside code to read if it has been pulled or not so it know it it has to inser the data or update it.
+
+output.hasBeenPulled = datapulled
 
   const options = {
     method: "POST",
@@ -170,6 +176,8 @@ async function getLoggedData() {
   document.getElementById('visualReproof').innerText = parsedData.visualReproof
   document.getElementById('outputs').innerText = parsedData.outputs
   document.getElementById('other').innerText = parsedData.other
+
+  datapulled = true
 
 }
 
