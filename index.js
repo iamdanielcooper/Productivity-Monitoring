@@ -6,7 +6,7 @@ const app = express()
 const proofDatabase = new Database('proofData.db')
 proofDatabase.loadDatabase()
 
-const port = 1000
+const port = process.env.PORT
 
 app.use(express.json());
 
