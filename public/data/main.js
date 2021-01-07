@@ -215,10 +215,14 @@ function processAverageCounts(arr1, arr2, arr3, arr4) {
 
 setDefaultDate()
 
+function refreshPage() {
+  location.reload()
+}
+
 function startLoadLogging() {
   console.log('data now live')
   var myVar
-  myvar = setInterval(getData, 20000) // this updates the data 
+  myvar = setInterval(refreshPage, 10000) // this updates the data 
 }
 
 startLoadLogging()
