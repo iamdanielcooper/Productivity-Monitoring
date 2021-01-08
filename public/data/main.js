@@ -129,7 +129,7 @@ async function getData() {
           label: "Average",
           data: averages,
           backgroundColor: [
-            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 255, 255, 0.2)",
             "rgba(255, 159, 64, 0.2)",
             "rgba(255, 159, 64, 0.2)",
             "rgba(255, 159, 64, 0.2)",
@@ -138,7 +138,8 @@ async function getData() {
             "rgba(255, 159, 64, 0.2)",
             "rgba(255, 159, 64, 0.2)",
           ],
-          type: 'line'
+          type: 'line',
+          fill: false
         },
       ],
     },
