@@ -20,6 +20,8 @@
   "dependencies": {
     "chart.js": "^2.9.4",
     "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongodb": "^3.6.3",
     "nedb": "^1.8.0"
   }
 }
