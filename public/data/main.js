@@ -1,5 +1,4 @@
-async function getData() {
-
+async function main() {
   // this object is declared and passed to the server to search the database
   const search = {};
 
@@ -19,214 +18,95 @@ async function getData() {
 
   const response = await fetch("/find", options);
   const data = await response.json();
-  
 
-  var numOfDatasets = 0
+  var totals = {
+    proofs: 0,
+    reproofs: 0,
+    multipage: 0,
+    multipageReproof: 0,
+    visuals: 0,
+    visualReproof: 0,
+    outputs: 0,
+    other: 0,
+  };
 
-  // Parse the data by name
+  // this parses the data from all entries into one object.
   for (let i = 0; i < data.length; i++) {
-    
-      switch (data[i].user) {
-        case "Dan":
-          var danData = processUserData(data[i])
-          numOfDatasets++
-          break;
-        case "Ben":
-          var benData = processUserData(data[i])
-          numOfDatasets++
-          break;
-        case "Ollie":
-          var ollieData = processUserData(data[i])
-          numOfDatasets++
-          break;
-        case "Bex":
-          var bexData = processUserData(data[i])
-          numOfDatasets++
-          break;
-
-        default:
-          break;
+    for (const key in data[i]) {
+      if (key == "user" || key == "date" || key == "_id") {
+        continue;
+      } else {
+        totals[key] += data[i][key];
       }
+    }
   }
 
-  // load graph
-  var ctx = document.getElementById("myChart");
 
+  //* This parses the label names.
+  totalsArr = [];
+  totalsArrLab = [];
 
-  var mainLabels = Object.keys(data[0]);
-  //update the labels to remove the date, user and id elements
-  let finalLabels = mainLabels.splice(0, 8)
-
-  //get averages by passing all the datasets to the funtion
-  if (numOfDatasets >= 3) {
-    var averages = processAverageCounts(danData, benData, bexData, ollieData)
-  } else {
-    var averages = []
+  for (const key in totals) {
+    totalsArr.push(totals[key]);
+    totalsArrLab.push(key);
   }
-  
 
+  for (let i = 0; i < totalsArrLab.length; i++) {
+    totalsArrLab[i] = totalsArrLab[i].toUpperCase();
+  }
 
+  //*  Loads graph into the GUI
+
+  var ctx = document.getElementById("myChart").getContext("2d");
   var myChart = new Chart(ctx, {
-    type: "bar",
+    type: "pie",
     data: {
-      labels: finalLabels,
+      labels: totalsArrLab,
       datasets: [
         {
-          label: "Dan",
-          data: danData,
+          label: "# of Votes",
+          data: totalsArr,
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, .9)",
+            "rgba(54, 162, 235, .9)",
+            "rgba(255, 206, 86, .9)",
+            "rgba(75, 192, 192, .9)",
+            "rgba(153, 102, 255, .9)",
+            "rgba(255, 159, 64, .9)",
+            "rgba(30, 120, 50, .9)",
+            "rgba(25, 200, 64, .9)",
           ],
-        }, {
-          label: "Bex",
-          data: bexData,
-          backgroundColor: [
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
+          borderColor: [
+            "rgba(255, 99, 132, .9)",
+            "rgba(54, 162, 235, .9)",
+            "rgba(255, 206, 86, .9)",
+            "rgba(75, 192, 192, .9)",
+            "rgba(153, 102, 255, .9)",
+            "rgba(255, 159, 64, .9)",
+            "rgba(30, 120, 50, .9)",
+            "rgba(25, 200, 64, .9)",
           ],
-        },
-        {
-          label: "Ben",
-          data: benData,
-          backgroundColor: [
-            "rgba(54, 162, 0, 0.2)",
-            "rgba(54, 162, 0, 0.2)",
-            "rgba(54, 162, 0, 0.2)",
-            "rgba(54, 162, 0, 0.2)",
-            "rgba(54, 162, 0, 0.2)",
-            "rgba(54, 162, 0, 0.2)",
-            "rgba(54, 162, 0, 0.2)",
-            "rgba(54, 162, 0, 0.2)",
-          ],
-        },
-        {
-          label: "Ollie",
-          data: ollieData,
-          backgroundColor: [
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-        },
-        {
-          label: "Average",
-          data: averages,
-          backgroundColor: [
-            "rgba(255, 255, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          type: 'line',
-          fill: false
+          borderWidth: 2,
         },
       ],
     },
     options: {
+      cutoutPercentage: 50,
       legend: {
-          display: true,
-          position: 'bottom',
-          labels: {
-            fontSize: 20
-          }
-          
+        position: "right",
       },
-      responsive: false,
       scales: {
-        yAxes: [{
+        gridLines: {
+          display: false,
+        },
+        yAxes: [
+          {
             ticks: {
-                beginAtZero: true,
-                
-                min: 0,
-                stepSize: 1
-
-            }
-        }
-        ]}
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
     },
   });
 }
-
-//* Helper Functions
-
-// Returns the data in a uniform array that the graph can read.
-function processUserData(data) {
-  let regexTest = /\D/g
-  let output = []
-  
-  for (const key in data) {
-    // this checks if the property is an integer by comparing it's type to the value of it parsed as an int.
-    if (data[key] === parseInt(data[key])) {
-      output.push(data[key])
-  } 
-  }
-  console.log(output)
-
-return output
-}
-
-// Gives the date selector todays date as default.
-function setDefaultDate() {
-let now = new Date()
-let months = now.getMonth() + 1
-let day = now.getDate()
-let year = now.getFullYear()
-
-if (day < 10) {
-  day = '0' + day
-}
-if (months < 10) {
-  months = '0' + months
-}
-
-
-// final string formatting. this formatting matches how the HTML date input date displays.
-document.getElementById('date').defaultValue = `${year}-${months}-${day}`
-}
-
-function processAverageCounts(arr1, arr2, arr3, arr4) {
-  output = []
-  for (let i = 0; i < arr1.length; i++) {
-    output.push((arr1[i] + arr2[i] + arr3[i] + arr4[i]) / 4)
-  }
-  console.log(output)
-  return output
-}
-
-setDefaultDate()
-
-function refreshPage() {
-  location.reload()
-}
-
-function startLoadLogging() {
-  console.log('data now live')
-  var myVar
-  myvar = setInterval(refreshPage, 100000) 
-  
-  getData()// this updates the data 
-}
-
-startLoadLogging()
