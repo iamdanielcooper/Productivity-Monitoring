@@ -17,6 +17,12 @@ body {
   flex-wrap: wrap;
 }
 
+#date {
+  display: block;
+  width: 60vw;
+  height: 35px;
+}
+
 #userSubmit {
   width: 80vw;
   margin: auto;
