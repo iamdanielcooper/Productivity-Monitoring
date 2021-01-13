@@ -26,6 +26,7 @@ async function main() {
     multipageReproof: 0,
     visuals: 0,
     visualReproof: 0,
+    approvals: 0,
     outputs: 0,
     other: 0,
   };
@@ -75,6 +76,7 @@ async function main() {
             "rgba(255, 159, 64, .9)",
             "rgba(30, 120, 50, .9)",
             "rgba(25, 200, 64, .9)",
+            "rgba(50, 125, 150, .9)",
           ],
           borderColor: [
             "rgba(255, 99, 132, .9)",
@@ -85,6 +87,7 @@ async function main() {
             "rgba(255, 159, 64, .9)",
             "rgba(30, 120, 50, .9)",
             "rgba(25, 200, 64, .9)",
+            "rgba(50, 125, 150, .9)",
           ],
           borderWidth: 2,
         },

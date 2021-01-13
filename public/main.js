@@ -5,6 +5,7 @@ var output = {
   multipageReproof: 0,
   visuals: 0,
   visualReproof: 0,
+  approvals: 0,
   outputs: 0,
   other: 0,
 };
@@ -171,6 +172,7 @@ async function getLoggedData() {
   document.getElementById('visualReproof').innerText = parsedData.visualReproof
   document.getElementById('outputs').innerText = parsedData.outputs
   document.getElementById('other').innerText = parsedData.other
+  document.getElementById('approvals').innerText = parsedData.approvals
   
   //update the output object to match the pased Dada, without this any unchanged values revert to zero when submitted.
   output = parsedData
