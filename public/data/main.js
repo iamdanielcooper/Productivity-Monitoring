@@ -110,3 +110,25 @@ async function main() {
     },
   });
 }
+
+function setDate() {
+  let now = new Date()
+  let months = now.getMonth() + 1
+  let day = now.getDate()
+  let year = now.getFullYear()
+
+  if (day < 10) {
+    day = '0' + day
+  }
+  if (months < 10) {
+    months = '0' + months
+  }
+
+  // final string formatting. this formatting matches how the HTML date input date displays.
+  
+
+  document.getElementById('date').value = `${year}-${months}-${day}`
+  return
+}
+
+setDate()
