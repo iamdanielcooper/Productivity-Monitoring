@@ -78,6 +78,7 @@ async function main() {
             "rgba(30, 120, 50, .9)",
             "rgba(25, 200, 64, .9)",
             "rgba(50, 125, 150, .9)",
+            "rgba(200, 99, 20, .9)",
           ],
           borderColor: [
             "rgba(255, 99, 132, .9)",
@@ -89,6 +90,7 @@ async function main() {
             "rgba(30, 120, 50, .9)",
             "rgba(25, 200, 64, .9)",
             "rgba(50, 125, 150, .9)",
+            "rgba(200, 99, 20, .9)",
           ],
           borderWidth: 2,
         },
