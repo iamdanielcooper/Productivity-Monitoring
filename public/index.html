@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport", initial-scale=1.0">
 
-    <title>Test</title>
+    <title>Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -92,6 +92,13 @@
                 <h2 class="buttonLabels">Approvals</h2>
             </div>
 
+            <div class="buttons">
+                <div class="minusButton" onclick="logWorkDone('preapproved', '-')"></div>
+                <div class="plusButton" onclick="logWorkDone('preapproved', '+')"></div>
+                <h3 id="preapproved" class="value">0</h3>
+                <h2 class="buttonLabels">Pre Approved</h2>
+            </div>
+
          
 
             <div class="buttons">
@@ -108,7 +115,7 @@
                 <h2 class="buttonLabels">Other</h2>
             </div>
 
-        </div>
+        
 
         <div id="userSubmit" class="footer">
             <select name="user" id="user" onchange="startLoadLogging()">
@@ -131,7 +138,7 @@
             </select>
             
         </div>
-    
+    </div>
 
         
 

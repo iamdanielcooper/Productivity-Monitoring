@@ -27,6 +27,7 @@ async function main() {
     visuals: 0,
     visualReproof: 0,
     approvals: 0,
+    preapproved: 0,
     outputs: 0,
     other: 0,
   };
