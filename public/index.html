@@ -19,13 +19,11 @@
         <a href="#" class="navLinks">Contact</a>
     </nav>
 </div>
-
-    <div id="header">
-        <h1>Workload Monitoring</h1>
-    </div>
+<div id="dropMain">
+    
 
     <div id="leadtimeDisplay">
-        <h2>Current Leadtimes</h2>
+     
             <div id="leadtimeContainer">
                 <div class="leadtime">
                     <h3>5 days</h3>
@@ -43,6 +41,18 @@
     </div>
 
         <div id="main">
+
+            <div id="userSubmit" class="footer">
+                <select name="user" id="user" onchange="startLoadLogging()">
+                    <option selected=true disabled=true>Select User</option>
+                    <option value="Dan">Dan</option>
+                    <option value="Bex">Bex</option>
+                    <option value="Ollie">Ollie</option>
+                    <option value="Ben">Ben</option>
+                </select> <br>
+                
+            </div>
+
             <div class="buttons">
                 <div class="minusButton" onclick="logWorkDone('proofs', '-')"></div>
                 <div class="plusButton" onclick="logWorkDone('proofs', '+')"></div>
@@ -117,16 +127,7 @@
 
         
 
-        <div id="userSubmit" class="footer">
-            <select name="user" id="user" onchange="startLoadLogging()">
-                <option selected=true disabled=true>Select User</option>
-                <option value="Dan">Dan</option>
-                <option value="Bex">Bex</option>
-                <option value="Ollie">Ollie</option>
-                <option value="Ben">Ben</option>
-            </select> <br>
             <button type="submit" class="footer" onclick="submit()">Submit</button>
-        </div>
 
         <div id="dataPull" onchange="getLoggedData()">
             <select id="dataPullSelect" onchange="hideDataPullOnceUSed()">
@@ -139,6 +140,7 @@
             
         </div>
     </div>
+</div>
 
         
 

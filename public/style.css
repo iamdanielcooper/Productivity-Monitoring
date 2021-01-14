@@ -22,12 +22,14 @@ body {
   border-radius: 25px;
 
   margin: auto;
-  padding: 40px;
+  padding: 25px 40px 25px 40px;
 
   display: flex;
   justify-content: center;
 
   flex-wrap: wrap;
+
+  filter: drop-shadow(0px 4px 2px #b8b8b8);
 }
 
 #date {
@@ -41,13 +43,14 @@ body {
   margin: auto;
   display: block;
   text-align: center;
+  margin-bottom: 25px;
 }
 #dataPull {
   width: 80vw;
   margin: auto;
   display: block;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 #header {
@@ -57,16 +60,17 @@ body {
 }
 
 .buttons {
-  width: 200px;
+  width: 100px;
   height: 60px;
-  background-color: rgb(227, 243, 246);
+  background-color: rgb(163, 205, 212);
   margin: 10px;
   margin-bottom: 50px;
 }
 .buttonLabels {
   position: relative;
-  top: -170px;
+  top: -178px;
   text-align: center;
+  font-size: 17px;
 }
 .value {
   text-align: center;
@@ -83,15 +87,17 @@ body {
   justify-content: space-between;
   margin: auto;
   margin-bottom: 0px;
+  position: sticky;
+  top: 0px;
 }
 .leadtime {
   position: relative;
   top: 0px;
 }
 .minusButton {
-  width: 100px;
+  width: 50px;
   height: 60px;
-  background-color: rgb(0, 160, 175);
+  background-color: rgb(209, 101, 101);
   position: relative;
   top: 0px;
   left: 0px;
@@ -99,20 +105,20 @@ body {
   z-index: 10;
 }
 .minusButton:hover {
-  opacity: 0.1;
+  opacity: 0.2;
 }
 .plusButton {
-  width: 100px;
+  width: 50px;
   height: 60px;
-  background-color: rgb(0, 160, 175);
+  background-color: rgb(209, 101, 101);
   position: relative;
   top: -60px;
-  left: 100px;
+  left: 50px;
   opacity: 0;
   z-index: 10;
 }
 .plusButton:hover {
-  opacity: 0.1;
+  opacity: 0.2;
 }
 .footer {
   margin-top: 20px;
@@ -137,6 +143,10 @@ select {
     width: 80vw;
     height: 60px;
     background-color: rgb(227, 243, 246);
+  }
+  select {
+    width: 80vw;
+    height: 60px;
   }
   #main {
     background-color: rgb(255, 255, 255);
@@ -178,14 +188,15 @@ select {
 nav {
   border-radius: 0px 25px 25px 0px;
   filter: drop-shadow(0px 25px 25px 0px #000000);
-  background-color: grey;
+  background-color: rgb(194, 164, 164);
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   top: 0;
+
   width: 100vw;
-  z-index: 10001;
+  z-index: 11;
   border-radius: 0px 25px 25px 0px;
   filter: drop-shadow(0px 25px 25px 0px #000000);
 }
@@ -221,4 +232,8 @@ button:hover {
 
 img {
   width: 500px;
+}
+#dropMain {
+  position: relative;
+  top: 80px;
 }
