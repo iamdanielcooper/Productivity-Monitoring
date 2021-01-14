@@ -70,7 +70,7 @@ async function main() {
           data: totalsArr,
           backgroundColor: [
             "rgba(255, 99, 132, .9)",
-            "rgba(54, 162, 235, .9)",
+            "rgba(245, 89, 122, .9)",
             "rgba(255, 206, 86, .9)",
             "rgba(75, 192, 192, .9)",
             "rgba(153, 102, 255, .9)",
@@ -81,7 +81,7 @@ async function main() {
           ],
           borderColor: [
             "rgba(255, 99, 132, .9)",
-            "rgba(54, 162, 235, .9)",
+            "rgba(250, 94, 128, .9)",
             "rgba(255, 206, 86, .9)",
             "rgba(75, 192, 192, .9)",
             "rgba(153, 102, 255, .9)",
