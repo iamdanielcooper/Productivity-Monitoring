@@ -21,17 +21,15 @@ async function loadData() {
     const response = await fetch("/find", options);
     const data = await response.json();
   
-    
+    // puts the parsed data into arrays the graph can read
     let userZeroData = parseData(data[0])
     let userOneData = parseData(data[1])
     let userTwoData = parseData(data[2])
     let userThreeData = parseData(data[3])
 
     let labels = parseLabels(data[0])
-    console.log(labels)
 
-    console.log(userZeroData, userOneData, userTwoData, userThreeData)
-
+    //  pass each to the load graph function.
     loadGraph("userOneChart", userZeroData, labels, userOneChart)
     loadGraph("userTwoChart", userOneData, labels, userTwoChart)
     loadGraph("userThreeChart", userTwoData, labels, userThreeChart)
