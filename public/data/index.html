@@ -13,20 +13,21 @@
 <body>
     <a href="https://return-of-prodman.herokuapp.com/">Data Input Page</a>
     <a href="http://localhost:2000/">Data Input Page(local testing)</a>
-    <canvas id="myChart"></canvas>
+    
     <div id="buttonContainer">
-        <input id="date" type="date">
-        <select id="users">
+        <canvas id="myChart"></canvas>
+        <input class="dataSelectInputs" id="date" type="date">
+        <select class="dataSelectInputs" id="users">
             <option value="">All</option>
             <option value="Dan">Dan</option>
             <option value="Bex">Bex</option>
             <option value="Ben">Ben</option>
             <option value="Ollie">Ollie</option>
         </select>
-        
+        <button class="dataSelectInputs" id="loadData" onclick="main()">Get It Boooooy</button>
     </div>
 
-    <button id="loadData" onclick="main()">Get It Boooooy</button>
+    
 
     
 

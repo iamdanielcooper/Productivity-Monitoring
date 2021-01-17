@@ -98,6 +98,8 @@ output.date = `${year}-${months}-${day}`
   console.log(JSON.stringify(output))
   fetch("/api", options);
   console.log("Success");
+
+  addTimestamp('submitTimestamp')
 }
 
 // This function abstracts away processing the current dispatch date. It takes one argument, a number of working days for dispatch. No need to account for weekends or holidays, this function takes those into account and returns the correct dispatch date.
@@ -182,6 +184,11 @@ async function getLoggedData() {
   output = parsedData
   console.log(parsedData)
 
+  // Update the User Select to the user chosen to pull the data from.
+  document.getElementById('user').value = parsedData.user
+  user
+  //Start pushing the data to the server
+  startLoadLogging()
 }
 
 function getDate() {
@@ -213,3 +220,16 @@ function startLoadLogging() {
   myvar = setInterval(submit, 900000) // this updates the data 
 }
 
+function addTimestamp(element) {
+  let time = new Date()
+  let hour = time.getHours()
+  let  mins = time.getMinutes()
+  if (mins < 10) {
+    mins = `0${mins}`
+  }
+  if (hour < 10) {
+    hour = `0${hour}`
+  }
+
+  document.getElementById(element).innerHTML = `last submit ${hour}:${mins}`
+}
