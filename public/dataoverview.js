@@ -178,5 +178,58 @@ function RGBAConvert(red, green, blue, opacity) {
   }
 
 
+  async function loadMonthData() {
+  
+
+    // IF a user has been specified it adds them to the search queery. If not it just adds the date.
+    /*if (document.getElementById("users").value != "") {
+      search.user = document.getElementById("users").value;
+    } */
+    let selectedMonth = document.getElementById("selectMonth").value;
+
+    
+
+    search = {}
+
+                      
+    
+  
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(search),
+    };
+  
+    const response = await fetch("/reg", options);
+    const data = await response.json();
+  
+    console.log(data)
+
+
+    let monthRegexString = `\\d+-${selectedMonth}-\\d+`
+
+    var monthRegex = new RegExp(monthRegexString);
+
+    let matchedEntries = []
+
+    // create an array of  entries that match the selected month
+    for (let i = 0; i < data.length; i++) {
+        if (monthRegex.test(data[i].date)) {
+            matchedEntries.push(data[i])
+        }   
+    }
+
+    console.log(matchedEntries)
+
+    // TODO Create an Array, one that is a sum of all the proof, reproofs, visuals, multipage ect for each day.
+    // TODO Create an array of the dates for each entry, this will be used as the labels for the graph
+
+   
+
+
+}
+
 
 setDate()

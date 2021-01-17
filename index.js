@@ -141,3 +141,16 @@ async function findInDBForGraph(input) {
         await client.close
     }
 }
+
+// find regex
+app.post('/reg', async (req, res) => {
+    const db = mongojs(process.env.KEY, ['artwork-data'])
+
+    let search = req.body
+    
+    
+    db.workload.find(search, function (err, docs) {
+        res.json(docs)
+        console.log(docs)
+    })
+})
