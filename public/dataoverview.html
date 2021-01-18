@@ -19,16 +19,22 @@
     <div id="main">
         <h1>Load Data for Each User</h1>
 
+        <input type="date" id="date">
+
+        <button type="button" onclick="loadData()">Load it or whatever, I don't care</button>
+
         <canvas id="userOneChart"></canvas>
         <canvas id="userTwoChart"></canvas>
         <canvas id="userThreeChart"></canvas>
         <canvas id="userFourChart"></canvas>
 
-        <input type="date" id="date">
 
         <h2>View totals by month</h2>
+
+        <canvas id="monthView"></canvas>
+
         <select name="selectMonth" id="selectMonth" onchange="loadMonthData() ">
-            <option value="" disabled=true>Select Month</option>
+            <option value="" disabled=true selected=true>Select Month</option>
             <option value="01">January</option>
             <option value="02">February</option>
             <option value="03">March</option>
@@ -42,7 +48,6 @@
             <option value="11">November</option>
             <option value="12">December</option>
         </select>
-        <button type="button" onclick="loadData()">Load it or whatever, I don't care</button>
     </div>
 
 
