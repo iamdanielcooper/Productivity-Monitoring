@@ -1,0 +1,28 @@
+body {
+  background-color: rgb(212, 212, 212);
+}
+#mainBackground {
+  width: 900px;
+  height: 500px;
+  background-color: rgb(243, 243, 243);
+  border-radius: 25px 25px 25px 25px;
+  position: relative;
+  margin: auto;
+  z-index: 1;
+  filter: drop-shadow(0px 10px 2px #7e7e7e2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dropdownBackground {
+  width: 900px;
+  height: 500px;
+  background-color: rgb(243, 243, 243);
+  position: relative;
+  margin: auto;
+  bottom: 460px;
+  border-radius: 25px 25px 25px 25px;
+  z-index: 0;
+  filter: drop-shadow(0px 10px 2px #7e7e7e2a);
+}
