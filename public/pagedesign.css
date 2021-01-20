@@ -2,7 +2,7 @@ body {
   background-color: rgb(212, 212, 212);
 }
 #mainBackground {
-  width: 900px;
+  width: 80vw;
   height: 500px;
   background-color: rgb(243, 243, 243);
   border-radius: 25px 25px 25px 25px;
@@ -10,13 +10,13 @@ body {
   margin: auto;
   z-index: 1;
   filter: drop-shadow(0px 10px 2px #7e7e7e2a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /*display: flex;*/
+  
+  transition-duration: .5s;
 }
 
 #dropdownBackground {
-  width: 900px;
+  width: 80vw;
   height: 500px;
   background-color: rgb(243, 243, 243);
   position: relative;
@@ -25,4 +25,118 @@ body {
   border-radius: 25px 25px 25px 25px;
   z-index: 0;
   filter: drop-shadow(0px 10px 2px #7e7e7e2a);
+  transition-duration: .5s;
+}
+
+/* Buton Styles */
+.clickBackground {
+  /* Colouring */
+  background-color: #e79555;
+  /* Sizing */
+  width: 100px;
+  height: 50px;
+  /* Text Styling */
+  text-align: center;
+  /* Spacing */
+  margin: 50px 25px 50px 25px;
+}
+.clickLeftForeground {
+  /* Colouring */
+  background-color: rgba(179, 119, 119, 0);
+  /* Sizing */
+  width: 50px;
+  height: 50px;
+  /* Positioning */
+  position: relative;
+  display: flex;
+  /* This Pushed the buttons onto the main background*/
+  top: -100px;
+  /* Spacing */
+  margin: 50px 25px 50px 25px;
+}
+.clickRightForeground {
+  /* Colouring */
+  background-color: rgba(179, 119, 119, 0);
+  /* Sizing */
+  width: 50px;
+  height: 50px;
+  /* Positioning */
+  position: relative;
+  display: flex;
+  /* This Pushed the buttons onto the main background*/
+  top: -200px;
+  left: 75px;
+  
+}
+
+.clickLeftForeground:hover {
+  background-color: rgba(53, 53, 53, 0.15);
+}
+.clickRightForeground:hover {
+  background-color: rgba(53, 53, 53, 0.15);
+}
+
+#arrowImage {
+  position: fixed;
+  
+  top: 475px;
+  width: 40px;
+  /* This nudges it left by half of it's width, making it central. */
+  right: calc(50% - 20px);
+  /* This slows down the Spin to match the speed of the drop.*/
+  transition-duration: .5s;
+}
+
+.dropdownContent {
+  position: fixed;
+  top: 300px;
+  display: flex;
+  left: 25px;
+}
+
+#clickBoxContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+#userSelectContainer {
+  display: flex;
+  justify-content: center;
+}
+#userSelect {
+  /* Size & Positioning */
+  position: relative;
+  top: 50px;
+  width: 60vw;
+  height: 40px;
+
+  border: none;
+  border-radius: 25px;
+
+  background-color: #dbdbdb;
+}
+
+button {
+  background: rgb(86, 78, 222);
+  background: linear-gradient(
+    90deg,
+    rgba(86, 78, 222, 1) 0%,
+    rgba(63, 63, 191, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border-radius: 20px;
+  color: aliceblue;
+  font-size: 25px;
+  text-transform: uppercase;
+  border: none;
+
+  width: 60vw;
+  height: 40px;
+  
+  position: relative;
+  left: calc(50% - 30vw);
+  bottom: 25px
+
+  
 }

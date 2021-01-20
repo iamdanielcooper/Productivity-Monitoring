@@ -9,11 +9,62 @@
 </head>
 <body>
     <div id="mainBackground">
-        <h2>test</h2>
+
+        <div id="userSelectContainer">
+            <select id="userSelect">
+                <option value="
+                " disabled=true selected=true>Select User</option>
+                <option value="Dan">Dan</option>
+                <option value="Bex">Bex</option>
+                <option value="Ben">Ben</option>
+                <option value="Ollie">Ollie</option>
+            </select>
+        </div>
+        
+        <div id="clickBoxContainer">
+        <div id="proofs">
+            <div class="clickBackground">
+                <h2>0</h2>
+                <h3>Proofs</h3>
+            </div>
+            <div class="clickLeftforeground" onclick="processIncrementor(this)"></div>
+            <div class="clickRightforeground" onclick="processIncrementor(this)"></div>
+        </div>
+
+        <div id="Reproofs">
+            <div class="clickBackground">
+                <h2>0</h2>
+                <h3>Reproofs</h3>
+            </div>
+            <div class="clickLeftforeground" onclick="processIncrementor(this)"></div>
+            <div class="clickRightforeground" onclick="processIncrementor(this)"></div>
+        </div>
+
+        <div id="Visuals">
+            <div class="clickBackground">
+                <h2>0</h2>
+                <h3>Visuals</h3>
+            </div>
+            <div class="clickLeftforeground" onclick="processIncrementor(this)"></div>
+            <div class="clickRightforeground" onclick="processIncrementor(this)"></div>
+        </div>
+        </div>
+
+        <div id="footer">
+            <button type="button">Go</button>
+        </div>
+
     </div>
+
+    
+
     <div id="dropdownBackground" onclick="toggleInfoDropdown(this.id)">
+        <p class="dropdownContent">Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo </p>
+        <img id="arrowImage" src="assets/arrow.svg">
         
     </div>
+
+    
     
 
 <script src="pagedesign.js"></script>
