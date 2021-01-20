@@ -1,5 +1,16 @@
 body {
   background-color: rgb(212, 212, 212);
+  height: 100vh;
+}
+#heading {
+  background-color: #55a7e7;
+  width: 80vw;
+  height: 31px;
+  position: relative;
+  top: -1px;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 0px 0px 25px 25px;
 }
 #mainBackground {
   width: 80vw;
@@ -10,9 +21,7 @@ body {
   margin: auto;
   z-index: 1;
   filter: drop-shadow(0px 10px 2px #7e7e7e2a);
-  /*display: flex;*/
-  
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 #dropdownBackground {
@@ -25,7 +34,7 @@ body {
   border-radius: 25px 25px 25px 25px;
   z-index: 0;
   filter: drop-shadow(0px 10px 2px #7e7e7e2a);
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 /* Buton Styles */
@@ -66,7 +75,6 @@ body {
   /* This Pushed the buttons onto the main background*/
   top: -200px;
   left: 75px;
-  
 }
 
 .clickLeftForeground:hover {
@@ -78,13 +86,13 @@ body {
 
 #arrowImage {
   position: fixed;
-  
+
   top: 475px;
   width: 40px;
   /* This nudges it left by half of it's width, making it central. */
   right: calc(50% - 20px);
   /* This slows down the Spin to match the speed of the drop.*/
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 .dropdownContent {
@@ -95,16 +103,19 @@ body {
 }
 
 #clickBoxContainer {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   flex-wrap: wrap;
+  margin-bottom: 0px;
   margin: 50px;
 }
+
 #userSelectContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
-#userSelect {
+.select {
   /* Size & Positioning */
   position: relative;
   top: 50px;
@@ -133,10 +144,27 @@ button {
 
   width: 60vw;
   height: 40px;
-  
+
   position: relative;
   left: calc(50% - 30vw);
-  bottom: 25px
+  bottom: 25px;
+}
 
-  
+.timestamp {
+  position: relative;
+  top: 5px;
+  font-size: 12px;
+}
+.boxLabel {
+  position: relative;
+  bottom: 14px;
+}
+#loadUserSelect {
+  position: relative;
+  left: calc(50% - 30vw);
+  top: -40px;
+}
+
+a {
+  text-align: center;
 }

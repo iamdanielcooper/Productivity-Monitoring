@@ -4,14 +4,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="pagedesign.css">
+    <link rel="icon" href="assets/arrow.png">
 
     <title>New Layout Style</title>
 </head>
 <body>
+
+    <div id="heading">
+        <a href="#">#This is link One</a>
+        <a href="#">¢ This is Link Two</a>
+        <a href="#">∞ This is Link Three</a>
+    </div>
+
     <div id="mainBackground">
 
         <div id="userSelectContainer">
-            <select id="userSelect">
+            <select id="userSelect" class="select">
                 <option value="
                 " disabled=true selected=true>Select User</option>
                 <option value="Dan">Dan</option>
@@ -25,7 +33,8 @@
         <div id="proofs">
             <div class="clickBackground">
                 <h2>0</h2>
-                <h3>Proofs</h3>
+                <p class="timestamp">00:00</p>
+                <h3 class="boxLabel">Proofs</h3>
             </div>
             <div class="clickLeftforeground" onclick="processIncrementor(this)"></div>
             <div class="clickRightforeground" onclick="processIncrementor(this)"></div>
@@ -34,7 +43,8 @@
         <div id="Reproofs">
             <div class="clickBackground">
                 <h2>0</h2>
-                <h3>Reproofs</h3>
+                <p class="timestamp">00:00</p>
+                <h3 class="boxLabel">Reproofs</h3>
             </div>
             <div class="clickLeftforeground" onclick="processIncrementor(this)"></div>
             <div class="clickRightforeground" onclick="processIncrementor(this)"></div>
@@ -43,15 +53,39 @@
         <div id="Visuals">
             <div class="clickBackground">
                 <h2>0</h2>
-                <h3>Visuals</h3>
+                <p class="timestamp">00:00</p>
+                <h3 class="boxLabel">Visuals</h3>
             </div>
             <div class="clickLeftforeground" onclick="processIncrementor(this)"></div>
             <div class="clickRightforeground" onclick="processIncrementor(this)"></div>
         </div>
+
+        <div id="VisualReproof">
+            <div class="clickBackground">
+                <h2>0</h2>
+                <p class="timestamp">00:00</p>
+                <h3 class="boxLabel">Visual Reproof</h3>
+            </div>
+            <div class="clickLeftforeground" onclick="processIncrementor(this)"></div>
+            <div class="clickRightforeground" onclick="processIncrementor(this)"></div>
+        </div>
+
+
+
         </div>
 
         <div id="footer">
-            <button type="button">Go</button>
+
+            <select id="loadUserSelect" class="Select">
+                <option value="
+                " disabled=true selected=true>Load Your Data</option>
+                <option value="Dan">Dan</option>
+                <option value="Bex">Bex</option>
+                <option value="Ben">Ben</option>
+                <option value="Ollie">Ollie</option>
+            </select>
+
+            <button type="button">submit</button>
         </div>
 
     </div>
@@ -59,7 +93,7 @@
     
 
     <div id="dropdownBackground" onclick="toggleInfoDropdown(this.id)">
-        <p class="dropdownContent">Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo </p>
+        <p class="dropdownContent" id="dropdownContent">Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo Peek-a-boo </p>
         <img id="arrowImage" src="assets/arrow.svg">
         
     </div>
