@@ -1,3 +1,5 @@
+var chart
+
 
 function setDate() {
   let now = new Date();
