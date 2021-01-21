@@ -226,6 +226,10 @@ async function loadMonthData() {
 
   var ctx = document.getElementById("monthView").getContext("2d");
 
+  if (chart != undefined) {
+    chart.destroy()
+  }
+
   chart = new Chart(ctx, {
     type: "bar",
     data: {
