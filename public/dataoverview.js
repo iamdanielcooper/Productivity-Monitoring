@@ -1,36 +1,3 @@
-// Declare the Graph Variables outside the function. This is so they can be checked  and the data cleared if needed.
-let userOneChart, userTwoChart, userThreeChart, userFourChart;
-
-async function loadData() {
-  const search = {};
-
-  search.date = document.getElementById("date").value;
-
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(search),
-  };
-
-  const response = await fetch("/find", options);
-  const data = await response.json();
-
-  // puts the parsed data into arrays the graph can read
-  let userZeroData = parseData(data[0]);
-  let userOneData = parseData(data[1]);
-  let userTwoData = parseData(data[2]);
-  let userThreeData = parseData(data[3]);
-
-  let labels = parseLabels(data[0]);
-
-  //  pass each to the load graph function.
-  loadGraph("userOneChart", userZeroData, labels, userOneChart);
-  loadGraph("userTwoChart", userOneData, labels, userTwoChart);
-  loadGraph("userThreeChart", userTwoData, labels, userThreeChart);
-  loadGraph("userFourChart", userThreeData, labels, userFourChart);
-}
 
 function setDate() {
   let now = new Date();
@@ -233,6 +200,27 @@ async function loadMonthData() {
     finalData,
     "RGBA(255,99,132,.9)"
   );
+  let graphAverageColour = getFullColourArray(finalData, "RGBA(69, 140, 255,1)")
+
+
+  // calculate the average 
+
+  let averageArray = []
+  let averageTotal = 0
+
+  // length - 1 because i dont want to include the data that's being collected in the average count.
+  for (let i = 0; i < finalData.length - 1; i++) {
+    averageTotal += finalData[i]
+  }
+
+  let average = averageTotal / (finalData.length - 1)
+
+  for (let i = 0; i < finalData.length; i++) {
+    averageArray.push(average)
+  }
+
+
+
 
   // Render Graph
 
@@ -244,6 +232,16 @@ async function loadMonthData() {
       labels: uniqueDates,
       datasets: [
         {
+
+          label: "average",
+          data: averageArray,
+          backgroundColor: graphAverageColour,
+          borderColor: graphAverageColour,
+          type: 'line',
+          fill: false,
+          borderWidth: 2,
+       
+        }, {
           label: "Proofs",
           data: finalData,
           backgroundColor: graphFillColours,
