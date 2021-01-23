@@ -84,7 +84,7 @@ body {
 .buttons {
   width: 100px;
   height: 60px;
-  background-color: rgb(163, 205, 212);
+  background-color: rgb(113, 180, 192);
   margin: 10px;
   margin-bottom: 50px;
 }
@@ -119,7 +119,7 @@ body {
 .minusButton {
   width: 50px;
   height: 60px;
-  background-color: rgb(209, 101, 101);
+  background-color: rgba(0, 0, 0, 0.562);
   position: relative;
   top: 0px;
   left: 0px;
@@ -132,7 +132,7 @@ body {
 .plusButton {
   width: 50px;
   height: 60px;
-  background-color: rgb(209, 101, 101);
+  background-color: rgba(0, 0, 0, 0.562);
   position: relative;
   top: -60px;
   left: 50px;
@@ -159,58 +159,14 @@ select {
   height: 35px;
   border-radius: 20px;
 }
-/*
-@media only screen and (max-width: 600px) {
-  .buttons {
-    width: 80vw;
-    height: 60px;
-    background-color: rgb(227, 243, 246);
-  }
-  select {
-    width: 80vw;
-    height: 60px;
-  }
-  #main {
-    background-color: rgb(255, 255, 255);
 
-    width: 80vw;
-    height: auto;
-
-    display: inline-flex;
-
-    justify-content: space-between;
-  }
-  .buttonLabels {
-    position: relative;
-    top: -170px;
-    text-align: center;
-    font-size: 18px;
-  }
-  button {
-    width: 80vw;
-    height: 45px;
-  }
-  .plusButton {
-    width: 40vw;
-    height: 60px;
-    background-color: rgb(0, 160, 175);
-    position: relative;
-    top: -60px;
-    left: 120vw;
-    opacity: 0;
-    z-index: 10;
-  }
-}
-*/
 #myChart {
   width: 80vw;
   height: 200px;
 }
 
 nav {
-  border-radius: 0px 25px 25px 0px;
-  filter: drop-shadow(0px 25px 25px 0px #000000);
-  background-color: rgb(194, 164, 164);
+  background-color: #3e8dd6;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -218,9 +174,9 @@ nav {
   top: 0;
 
   width: 100vw;
-  z-index: 11;
-  border-radius: 0px 25px 25px 0px;
-  filter: drop-shadow(0px 25px 25px 0px #000000);
+  height: 30px;
+
+  border-radius: 0px 0px 25px 25px;
 }
 .navLinks {
   text-decoration: none;
@@ -231,7 +187,8 @@ nav {
   z-index: 1000;
 }
 .navLinks:hover {
-  color: rgb(75, 75, 75);
+  color: rgb(71, 71, 71);
+  font-weight: 700;
 }
 button {
   background: rgb(86, 78, 222);
@@ -257,5 +214,5 @@ img {
 }
 #dropMain {
   position: relative;
-  top: 80px;
+  top: 25px;
 }
