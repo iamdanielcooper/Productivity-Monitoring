@@ -1,118 +1,6 @@
 var chart
 
-
-function setDate() {
-  let now = new Date();
-  let months = now.getMonth() + 1;
-  let day = now.getDate();
-  let year = now.getFullYear();
-
-  if (day < 10) {
-    day = "0" + day;
-  }
-  if (months < 10) {
-    months = "0" + months;
-  }
-
-  // final string formatting. this formatting matches how the HTML date input date displays.
-
-  document.getElementById("date").value = `${year}-${months}-${day}`;
-  return;
-}
-
-function parseData(obj) {
-  let output = [];
-  output.push(obj.user);
-  output.push(obj.proofs);
-  output.push(obj.reproofs);
-  output.push(obj.multipage);
-  output.push(obj.multipageReproof);
-  output.push(obj.visuals);
-  output.push(obj.visualReproof);
-  output.push(obj.preapproved);
-  output.push(obj.approvals);
-  output.push(obj.outputs);
-  output.push(obj.other);
-  return output;
-}
-
-function parseLabels() {
-  let output = [];
-  output.push("user");
-  output.push("proofs");
-  output.push("reproofs");
-  output.push("multipage");
-  output.push("multipageReproof");
-  output.push("visuals");
-  output.push("visualReproof");
-  output.push("preapproved");
-  output.push("approvals");
-  output.push("outputs");
-  output.push("other");
-  return output;
-}
-
-function loadGraph(element, data, labels, chart) {
-  var ctx = document.getElementById(element).getContext("2d");
-
-  let mainLabels = [];
-  mainLabels.push(data[0]);
-
-  let graphData = [];
-  let graphLabels = [];
-
-  for (let i = 0; i < data.length; i++) {
-    if (i == 0) {
-      continue;
-    } else {
-      graphData.push(data[i]);
-      graphLabels.push(labels[i]);
-    }
-  }
-
-  let graphFillColours = getFullColourArray(data, "RGBA(236,122,142,1)");
-  let graphOutlineColours = getFullColourArray(data, "RGBA(255,99,132,.9)");
-
-  if (chart != undefined) {
-    chart.destroy();
-  }
-
-  chart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: graphLabels,
-      datasets: [
-        {
-          label: mainLabels,
-          data: graphData,
-          backgroundColor: graphFillColours,
-          borderColor: graphOutlineColours,
-          borderWidth: 2,
-        },
-      ],
-    },
-    options: {
-      cutoutPercentage: 50,
-      legend: {
-        position: "right",
-      },
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              display: true,
-            },
-            gridLines: {
-              display: true,
-              drawTicks: false,
-            },
-          },
-        ],
-      },
-    },
-  });
-}
+//* Main Function *//
 
 async function loadMonthData() {
  
@@ -149,24 +37,49 @@ async function loadMonthData() {
     return;
   }
 
-  let finalTotals = [];
-  let finalLabels = [];
+  //* Get the value of the selected and switch the the correct array
+  let viewSelected = document.getElementById('viewSelect').value
 
+  let arrayCheck
+
+  switch (viewSelected) {
+    case "totalProofsAndReproofs":
+      arrayCheck = ['proofs', 'reproofs', 'multipage', 'multipageReproof', 'visuals', 'visualReproof']
+      break;
+    case "proofsV1":
+      arrayCheck = ['proofs','multipage']
+      break;
+    case "visualsV1":
+      arrayCheck = ['visuals']
+      break;
+    case "reproofs":
+      arrayCheck = ['reproofs', 'multipageReproof', 'visualReproof']
+      break;
+      case "preApproved":
+        arrayCheck = ['preapproved']
+      break;
+      case "outputs":
+        arrayCheck = ['outputs']
+      break;
+  
+    default:
+        console.log('Err: Not View Select not defined.')
+      break;
+  }
+
+
+  let finalTotals = [];
+  let tempLabels = [];
+
+  // Check every entry that matched.
   for (let i = 0; i < matchedEntries.length; i++) {
     let total = 0;
-    for (const key in matchedEntries[i]) {
-      if (key == "date") {
-        finalLabels.push(matchedEntries[i][key]);
-      } else if (
-        key == "proofs" ||
-        key == "reproofs" ||
-        key == "visuals" ||
-        key == "visualReproof" ||
-        key == "multipage" ||
-        key == "multipageReproof"
-      ) {
-        let temp = parseInt(matchedEntries[i][key]);
-        total += temp;
+    for (const key in matchedEntries[i]) { // loop for through the objects to see all the keys.
+      if (key == "date") { // push all the dates into the tempLabels array, this gets refined later.
+        tempLabels.push(matchedEntries[i][key]);
+      } else if (isInArray(arrayCheck, key)) {
+        let temp = parseInt(matchedEntries[i][key]); // parse the entry into a number.
+        total += temp; // add the number to the temp, this needs to be done if we're counting more then one thing.
       }
     }
     finalTotals.push(total);
@@ -177,18 +90,18 @@ async function loadMonthData() {
 
   let uniqueDates = [];
 
-  for (let i = 0; i < finalLabels.length; i++) {
-    if (!isInArray(uniqueDates, finalLabels[i])) {
+  for (let i = 0; i < tempLabels.length; i++) {
+    if (!isInArray(uniqueDates, tempLabels[i])) {
       //if it isn't in the array, add it.
-      uniqueDates.push(finalLabels[i]);
+      uniqueDates.push(tempLabels[i]);
     }
   }
 
   let finalData = [];
 
-  for (let i = 0; i < finalLabels.length; i++) {
+  for (let i = 0; i < tempLabels.length; i++) {
     // get the index of the corresponding date in the unique dates array
-    let tempIndex = uniqueDates.indexOf(finalLabels[i]);
+    let tempIndex = uniqueDates.indexOf(tempLabels[i]);
     // say if that value in the finalData array is undefined addd it to the index found above.
     if (finalData[tempIndex] == undefined) {
       finalData[tempIndex] = finalTotals[i];
@@ -210,7 +123,7 @@ async function loadMonthData() {
   let averageArray = []
   let averageTotal = 0
 
-  // length - 1 because i dont want to include the data that's being collected in the average count.
+  // length - 1 because i don't want to include the data that's being collected in the average count.
   for (let i = 0; i < finalData.length - 1; i++) {
     averageTotal += finalData[i]
   }
@@ -221,10 +134,7 @@ async function loadMonthData() {
     averageArray.push(average)
   }
 
-
-
-
-  // Render Graph
+  //* Render Graph
 
   var ctx = document.getElementById("monthView").getContext("2d");
 
@@ -279,6 +189,9 @@ async function loadMonthData() {
   });
 }
 
+
+//* Supporting Functions *//
+
 function isInArray(arr, item) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] == item) {
@@ -298,4 +211,15 @@ function getFullColourArray(arr, colour) {
   return output;
 }
 
-setDate();
+function turnOnButton() {
+  let objectRef = document.getElementById('loadGraphButton')
+
+  if (objectRef.hidden == true && document.getElementById('selectMonth').value != "" && document.getElementById('viewSelect').value != "") {
+    objectRef.hidden = false
+  }
+  return
+}
+
+// Event Listeners to load the graph load button once both elements are selected.
+document.getElementById('selectMonth').addEventListener('change', turnOnButton)
+document.getElementById('viewSelect').addEventListener('change', turnOnButton)

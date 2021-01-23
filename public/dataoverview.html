@@ -14,7 +14,7 @@
 
     <title>Team Overview</title>
 
-</head>
+</head> 
 <body>
     <div id="main">
         
@@ -22,7 +22,18 @@
 
         <canvas id="monthView"></canvas>
 
-        <select name="selectMonth" id="selectMonth" onchange="loadMonthData() ">
+
+        <select name="viewSelect" id="viewSelect">
+            <option value="" disabled=true selected=true>Select What To View</option>
+            <option value="totalProofsAndReproofs">Total Proofs & Reproofs</option>
+            <option value="proofsV1">Proofs V1</option>
+            <option value="visualsV1">Visuals V1</option>
+            <option value="reproofs">Reproofs</option>
+            <option value="preApproved">Pre Approved</option>
+            <option value="outputs">Outputs</option>
+        </select>
+
+        <select name="selectMonth" id="selectMonth">
             <option value="" disabled=true selected=true>Select Month</option>
             <option value="01">January</option>
             <option value="02">February</option>
@@ -37,6 +48,9 @@
             <option value="11">November</option>
             <option value="12">December</option>
         </select>
+
+        <button type="button" hidden=true id="loadGraphButton" onclick="loadMonthData()">Load Graph</button>
+
     </div>
 
 
