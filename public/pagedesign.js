@@ -67,3 +67,5 @@ function addToTimestampLog(time) {
     timestampLog.pop(time)
     document.getElementById('dropdownContent').innerText = timestampLog
 }
+
+console.log('hello')

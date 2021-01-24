@@ -109,7 +109,7 @@ body {
   justify-content: space-between;
   margin: auto;
   margin-bottom: 0px;
-  position: sticky;
+
   top: 0px;
 }
 .leadtime {
@@ -167,20 +167,19 @@ select {
 
 nav {
   background-color: #3e8dd6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
+  display: inline-block;
   top: 0;
-
+  margin: auto;
   width: 100vw;
-  height: 30px;
+  height: auto;
+  padding: 0px;
 
   border-radius: 0px 0px 25px 25px;
 }
 .navLinks {
   text-decoration: none;
-  margin: 25px 40px 25px 50px;
+  padding-left: 50px;
+  padding-right: 50px;
   color: rgb(255, 255, 255);
   font-size: 22px;
   text-align: center;
@@ -215,4 +214,10 @@ img {
 #dropMain {
   position: relative;
   top: 25px;
+}
+
+@media (max-width: 722px) {
+  .navLinks {
+    font-size: 18px;
+  }
 }

@@ -1,170 +1,179 @@
 body {
-  background-color: rgb(212, 212, 212);
+  background-color: rgb(236, 236, 236);
   height: 100vh;
-}
-#heading {
-  background-color: #55a7e7;
-  width: 80vw;
-  height: 31px;
-  position: relative;
-  top: -1px;
-  margin: auto;
-  margin-bottom: 10px;
-  border-radius: 0px 0px 25px 25px;
-}
-#mainBackground {
-  width: 80vw;
-  height: 500px;
-  background-color: rgb(243, 243, 243);
-  border-radius: 25px 25px 25px 25px;
-  position: relative;
-  margin: auto;
-  z-index: 1;
-  filter: drop-shadow(0px 10px 2px #7e7e7e2a);
-  transition-duration: 0.5s;
+  width: 100vw;
 }
 
-#dropdownBackground {
-  width: 80vw;
-  height: 500px;
-  background-color: rgb(243, 243, 243);
-  position: relative;
-  margin: auto;
-  bottom: 460px;
-  border-radius: 25px 25px 25px 25px;
-  z-index: 0;
-  filter: drop-shadow(0px 10px 2px #7e7e7e2a);
-  transition-duration: 0.5s;
+/* Define the grid */
+
+#mainGridContainer {
+  display: grid;
+  /* Define the areas of the grid */
+  grid-template-columns: auto 600px auto;
+  grid-template-rows: 50px 300px 100px;
+}
+/* Dinfine how the main grid container is laid out. */
+#menu {
+  background-color: burlywood;
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+
+  overflow: auto;
 }
 
-/* Buton Styles */
-.clickBackground {
-  /* Colouring */
-  background-color: #e79555;
-  /* Sizing */
-  width: 100px;
-  height: 50px;
-  /* Text Styling */
+#mainBody {
+  background-color: #2dcfba;
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+
+#footer {
+  background-color: rgb(153, 94, 16);
+  grid-column: 2 / span 1;
+  grid-row: 3 / span 1;
+}
+
+/* Define the node Grids */
+
+#mainbody {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+}
+#exampleNode1 {
+  background-color: darkmagenta;
+
+  /* Define the inner grid of the nodes */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr 1fr;
+
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+
+  margin: 15px;
+}
+#exampleNode2 {
+  background-color: darkmagenta;
+
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+
+  margin: 15px;
+}
+#exampleNode3 {
+  background-color: darkmagenta;
+
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 1;
+
+  margin: 15px;
+}
+#exampleNode4 {
+  background-color: darkmagenta;
+
+  grid-column: 4 / span 1;
+  grid-row: 1 / span 1;
+
+  margin: 15px;
+}
+#exampleNode5 {
+  background-color: darkmagenta;
+
+  grid-column: 5 / span 1;
+  grid-row: 1 / span 1;
+
+  margin: 15px;
+}
+
+#exampleNode6 {
+  background-color: darkmagenta;
+
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+
+  margin: 15px;
+}
+#exampleNode7 {
+  background-color: darkmagenta;
+
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+
+  margin: 15px;
+}
+#exampleNode8 {
+  background-color: darkmagenta;
+
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 1;
+
+  margin: 15px;
+}
+#exampleNode9 {
+  background-color: darkmagenta;
+
+  grid-column: 4 / span 1;
+  grid-row: 2 / span 1;
+
+  margin: 15px;
+}
+#exampleNode10 {
+  background-color: darkmagenta;
+
+  grid-column: 5 / span 1;
+  grid-row: 2 / span 1;
+
+  margin: 15px;
+}
+
+#counter1 {
+  background-color: darkorange;
+
   text-align: center;
-  /* Spacing */
-  margin: 50px 25px 50px 25px;
-}
-.clickLeftForeground {
-  /* Colouring */
-  background-color: rgba(179, 119, 119, 0);
-  /* Sizing */
-  width: 50px;
-  height: 50px;
-  /* Positioning */
-  position: relative;
-  display: flex;
-  /* This Pushed the buttons onto the main background*/
-  top: -100px;
-  /* Spacing */
-  margin: 50px 25px 50px 25px;
-}
-.clickRightForeground {
-  /* Colouring */
-  background-color: rgba(179, 119, 119, 0);
-  /* Sizing */
-  width: 50px;
-  height: 50px;
-  /* Positioning */
-  position: relative;
-  display: flex;
-  /* This Pushed the buttons onto the main background*/
-  top: -200px;
-  left: 75px;
-}
 
-.clickLeftForeground:hover {
-  background-color: rgba(53, 53, 53, 0.15);
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 1;
 }
-.clickRightForeground:hover {
-  background-color: rgba(53, 53, 53, 0.15);
-}
+#timestamp1 {
+  background-color: rgb(44, 179, 138);
 
-#arrowImage {
-  position: fixed;
-
-  top: 475px;
-  width: 40px;
-  /* This nudges it left by half of it's width, making it central. */
-  right: calc(50% - 20px);
-  /* This slows down the Spin to match the speed of the drop.*/
-  transition-duration: 0.5s;
-}
-
-.dropdownContent {
-  position: fixed;
-  top: 300px;
-  display: flex;
-  left: 25px;
-}
-
-#clickBoxContainer {
-  display: inline-flex;
-  flex-wrap: wrap;
-  margin-bottom: 0px;
-  margin: 50px;
-}
-
-#userSelectContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-.select {
-  /* Size & Positioning */
-  position: relative;
-  top: 50px;
-  width: 60vw;
-  height: 40px;
-
-  border: none;
-  border-radius: 25px;
-
-  background-color: #dbdbdb;
-}
-
-button {
-  background: rgb(86, 78, 222);
-  background: linear-gradient(
-    90deg,
-    rgba(86, 78, 222, 1) 0%,
-    rgba(63, 63, 191, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  border-radius: 20px;
-  color: aliceblue;
-  font-size: 25px;
-  text-transform: uppercase;
-  border: none;
-
-  width: 60vw;
-  height: 40px;
-
-  position: relative;
-  left: calc(50% - 30vw);
-  bottom: 25px;
-}
-
-.timestamp {
-  position: relative;
-  top: 5px;
-  font-size: 12px;
-}
-.boxLabel {
-  position: relative;
-  bottom: 14px;
-}
-#loadUserSelect {
-  position: relative;
-  left: calc(50% - 30vw);
-  top: -40px;
-}
-
-a {
   text-align: center;
+
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 1;
+}
+#name1 {
+  background-color: rgb(13, 114, 84);
+
+  text-align: center;
+
+  grid-column: 1 / span 2;
+  grid-row: 3 / span 1;
+}
+
+.node {
+  height: 100px;
+}
+
+.leftButton {
+  background-color: rgb(0, 0, 0);
+  position: relative;
+  opacity: 0;
+  width: 50%;
+  height: 100%;
+  bottom: 100%;
+}
+.rightButton {
+  background-color: rgb(0, 0, 0);
+  opacity: 0;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  left: 50%;
+  bottom: 200%;
+}
+.buttons:hover {
+  opacity: 0.1;
 }
