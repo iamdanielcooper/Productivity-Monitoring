@@ -1,11 +1,12 @@
 body {
-  background: rgb(228, 228, 228);
-  /*background: linear-gradient(
+  background: rgb(175, 167, 167);
+  background: linear-gradient(
     0deg,
-    rgba(200, 200, 200, 1) 0%,
-    rgba(203, 203, 203, 1) 77%,
+    rgba(175, 167, 167, 1) 0%,
+    rgba(203, 203, 203, 1) 57%,
     rgba(232, 232, 232, 1) 100%
-  );*/
+  );
+
   font-family: "Cutive Mono", monospace;
 }
 #mainBody {
@@ -30,28 +31,6 @@ body {
   flex-wrap: wrap;
 
   filter: drop-shadow(0px 4px 2px #b8b8b8);
-}
-#buttonContainer {
-  background-color: rgb(255, 255, 255);
-
-  width: 60vw;
-  height: auto;
-
-  border-radius: 25px;
-
-  margin: auto;
-  padding: 25px 40px 25px 40px;
-
-  display: flex;
-  justify-content: center;
-
-  flex-wrap: wrap;
-
-  filter: drop-shadow(0px 4px 2px #b8b8b8);
-}
-
-.dataSelectInputs {
-  margin: 10px 0px 10px 0px;
 }
 
 #date {
@@ -149,11 +128,7 @@ body {
   margin-top: 20px;
   border-radius: 20px;
 }
-button {
-  width: 60vw;
-  height: 45px;
-  border-style: none;
-}
+
 select {
   width: 60vw;
   height: 35px;
@@ -220,4 +195,41 @@ img {
   .navLinks {
     font-size: 18px;
   }
+}
+
+/* Data Page grid layout */
+
+#mainDataContainer {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 800px 1fr;
+  grid-template-rows: 1fr 500px 1fr;
+}
+#testElm {
+  background-color: aquamarine;
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 1fr;
+
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+
+  border-radius: 18px;
+
+  padding: 18px;
+}
+#l2 {
+  background-color: lightcoral;
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+  margin: 10px;
+  border-radius: 0px 0px 18px 18px;
+  padding: 18px;
+}
+#billy {
+  width: 200px;
+  height: 25px;
+  display: block;
 }
