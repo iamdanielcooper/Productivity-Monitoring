@@ -1,6 +1,5 @@
-body{
-    
-}
+
+/* Main View */
 
 /* Define Main Container */
 #mainContainer {
@@ -82,6 +81,9 @@ body{
     grid-row: 2 / span 1;
 
     border-radius: 30px;
+
+    filter: drop-shadow(0 1px 10px #6d6d6d);
+
 }
 .inlineData{
     display: inline-block;
