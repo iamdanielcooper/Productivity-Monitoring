@@ -1,0 +1,183 @@
+Body {
+  height: 100vh;
+}
+
+/* Main View */
+
+/* Define Main Container */
+#mainContainer {
+  display: grid;
+
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
+
+  height: 100vh;
+}
+
+#leftContainer {
+  background-color: rgb(219, 219, 219);
+
+  /* How it fits into the main container */
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+
+  /* Define it's subgrid */
+  display: grid;
+  grid-template-columns: minmax(20px, 1000px) 740px minmax(20px, 1000px);
+  grid-template-rows: 90px 460px 90px;
+}
+#rightContainer {
+  background-color: rgba(194, 194, 194, 3);
+
+  /* How it fits into the main container */
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+
+  /* Define it's subgrid */
+  display: grid;
+  grid-template-columns: auto minmax(50%, 75%) auto;
+  grid-template-rows: 1fr 3fr 1fr 3fr 1fr 3fr 1fr;
+
+}
+
+/* Test containers */
+#graphContainer {
+  background-color: rgb(255, 255, 255);
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+
+  border-radius: 30px;
+
+  z-index: 20;
+
+  /* Define Grid */
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 80% 10%;
+}
+
+#bottomOne {
+  background-color: rgb(255, 255, 255);
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+#bottomTwo {
+  background-color: rgb(255, 255, 255);
+  grid-column: 2 / span 1;
+  grid-row: 4 / span 3;
+}
+
+
+.bottomElm {
+  border-radius: 20px;
+  text-align: center;
+}
+
+#dropDown {
+  background-color: cadetblue;
+  position: relative;
+
+  top: 25px;
+
+  z-index: 10;
+
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+
+  border-radius: 30px;
+
+  filter: drop-shadow(0 1px 10px #6d6d6d);
+
+  text-align: center;
+}
+.inlineData {
+  display: inline-block;
+}
+#myChart {
+  width: 300px;
+}
+
+#topDate {
+  /* Grid layout */
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+
+  border-bottom: solid 2px #eeeeee;
+  padding: 0px;
+
+  /* Text Format */
+  text-align: center;
+}
+
+#GraphGoesHere {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+
+  text-align: center;
+
+  padding: 30px;
+  padding-bottom: 30px;
+}
+
+#myChart {
+}
+
+.dateSelect {
+  /* Hide and reveal this with Javascript */
+  position: relative;
+  top: 420px;
+
+/* Thin View */
+/* Fix this in update */
+@media only screen and (max-width: 1000px) {
+  #mainContainer {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 30% 60%;
+  }
+
+  /* Top */
+  #leftContainer {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+  }
+  /* Bottom */
+  #rightContainer {
+    background-color: rgba(194, 194, 194, 3);
+
+    /* How it fits into the main container */
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+
+    /* Define it's subgrid */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 200px 200px;
+
+    overflow: scroll;
+  }
+
+  #bottomOne {
+    background-color: rgb(255, 255, 255);
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+  }
+  #bottomTwo {
+    background-color: rgb(255, 255, 255);
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+  }
+  #bottomThree {
+    background-color: rgb(255, 255, 255);
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 1;
+  }
+
+  .bottomElm {
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
