@@ -1,12 +1,11 @@
 body {
-  background: rgb(175, 167, 167);
-  background: linear-gradient(
+  background: rgb(228, 228, 228);
+  /*background: linear-gradient(
     0deg,
-    rgba(175, 167, 167, 1) 0%,
-    rgba(203, 203, 203, 1) 57%,
+    rgba(200, 200, 200, 1) 0%,
+    rgba(203, 203, 203, 1) 77%,
     rgba(232, 232, 232, 1) 100%
-  );
-
+  );*/
   font-family: "Cutive Mono", monospace;
 }
 #mainBody {
@@ -31,6 +30,28 @@ body {
   flex-wrap: wrap;
 
   filter: drop-shadow(0px 4px 2px #b8b8b8);
+}
+#buttonContainer {
+  background-color: rgb(255, 255, 255);
+
+  width: 60vw;
+  height: auto;
+
+  border-radius: 25px;
+
+  margin: auto;
+  padding: 25px 40px 25px 40px;
+
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  filter: drop-shadow(0px 4px 2px #b8b8b8);
+}
+
+.dataSelectInputs {
+  margin: 10px 0px 10px 0px;
 }
 
 #date {
@@ -63,7 +84,7 @@ body {
 .buttons {
   width: 100px;
   height: 60px;
-  background-color: rgb(113, 180, 192);
+  background-color: rgb(163, 205, 212);
   margin: 10px;
   margin-bottom: 50px;
 }
@@ -88,7 +109,7 @@ body {
   justify-content: space-between;
   margin: auto;
   margin-bottom: 0px;
-
+  position: sticky;
   top: 0px;
 }
 .leadtime {
@@ -98,7 +119,7 @@ body {
 .minusButton {
   width: 50px;
   height: 60px;
-  background-color: rgba(0, 0, 0, 0.562);
+  background-color: rgb(209, 101, 101);
   position: relative;
   top: 0px;
   left: 0px;
@@ -111,7 +132,7 @@ body {
 .plusButton {
   width: 50px;
   height: 60px;
-  background-color: rgba(0, 0, 0, 0.562);
+  background-color: rgb(209, 101, 101);
   position: relative;
   top: -60px;
   left: 50px;
@@ -128,41 +149,86 @@ body {
   margin-top: 20px;
   border-radius: 20px;
 }
-
+button {
+  width: 60vw;
+  height: 45px;
+  border-style: none;
+}
 select {
   width: 60vw;
   height: 35px;
   border-radius: 20px;
 }
-
+/*
+@media only screen and (max-width: 600px) {
+  .buttons {
+    width: 80vw;
+    height: 60px;
+    background-color: rgb(227, 243, 246);
+  }
+  select {
+    width: 80vw;
+    height: 60px;
+  }
+  #main {
+    background-color: rgb(255, 255, 255);
+    width: 80vw;
+    height: auto;
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  .buttonLabels {
+    position: relative;
+    top: -170px;
+    text-align: center;
+    font-size: 18px;
+  }
+  button {
+    width: 80vw;
+    height: 45px;
+  }
+  .plusButton {
+    width: 40vw;
+    height: 60px;
+    background-color: rgb(0, 160, 175);
+    position: relative;
+    top: -60px;
+    left: 120vw;
+    opacity: 0;
+    z-index: 10;
+  }
+}
+*/
 #myChart {
   width: 80vw;
   height: 200px;
 }
 
 nav {
-  background-color: #3e8dd6;
-  display: inline-block;
+  border-radius: 0px 25px 25px 0px;
+  filter: drop-shadow(0px 25px 25px 0px #000000);
+  background-color: rgb(194, 164, 164);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
   top: 0;
-  margin: auto;
-  width: 100vw;
-  height: auto;
-  padding: 0px;
 
-  border-radius: 0px 0px 25px 25px;
+  width: 100vw;
+  z-index: 11;
+  border-radius: 0px 25px 25px 0px;
+  filter: drop-shadow(0px 25px 25px 0px #000000);
 }
 .navLinks {
   text-decoration: none;
-  padding-left: 50px;
-  padding-right: 50px;
+  margin: 25px 40px 25px 50px;
   color: rgb(255, 255, 255);
   font-size: 22px;
   text-align: center;
   z-index: 1000;
 }
 .navLinks:hover {
-  color: rgb(71, 71, 71);
-  font-weight: 700;
+  color: rgb(75, 75, 75);
 }
 button {
   background: rgb(86, 78, 222);
@@ -188,48 +254,5 @@ img {
 }
 #dropMain {
   position: relative;
-  top: 25px;
-}
-
-@media (max-width: 722px) {
-  .navLinks {
-    font-size: 18px;
-  }
-}
-
-/* Data Page grid layout */
-
-#mainDataContainer {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 800px 1fr;
-  grid-template-rows: 1fr 500px 1fr;
-}
-#testElm {
-  background-color: aquamarine;
-  display: grid;
-
-  grid-template-columns: 1fr;
-  grid-template-rows: 3fr 1fr;
-
-  grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
-
-  border-radius: 18px;
-
-  padding: 18px;
-}
-#l2 {
-  background-color: lightcoral;
-  grid-column: 1 / span 1;
-  grid-row: 2 / span 1;
-  margin: 10px;
-  border-radius: 0px 0px 18px 18px;
-  padding: 18px;
-}
-#billy {
-  width: 200px;
-  height: 25px;
-  display: block;
+  top: 80px;
 }

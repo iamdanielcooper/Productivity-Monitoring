@@ -1,4 +1,4 @@
-Body {
+zBody {
   height: 100vh;
 }
 
@@ -60,6 +60,13 @@ Body {
   background-color: rgb(255, 255, 255);
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
+
+  display: grid;
+
+  grid-template-columns: auto 200px auto;
+  grid-template-rows: 5fr 2fr;
+
+  overflow: hidden;
 }
 #bottomTwo {
   background-color: rgb(255, 255, 255);
@@ -67,9 +74,42 @@ Body {
   grid-row: 4 / span 3;
 }
 
+#dateSub {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+}
+#dateAdd {
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 2;
+}
+
+#leftInfoDate {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+
+  overflow: hidden;
+}
+#dateLeftSelect {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  background-color: rosybrown;
+}
+
+.dateArrow:hover {
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
 .bottomElm {
   border-radius: 20px;
   text-align: center;
+}
+
+/* This adds the line above the date on the right*/
+#dateLine {
+  border-top: black solid 1px;
+  grid-column: 1 / span 3;
+  grid-row: 2 / span 2;
+  z-index: 30;
 }
 
 #dropDown {
@@ -116,9 +156,6 @@ Body {
 
   padding: 30px;
   padding-bottom: 30px;
-}
-
-#myChart {
 }
 
 .dateSelect {

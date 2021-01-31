@@ -31,24 +31,24 @@
                 </div>
             </div>
             <div id="dropDown" onclick="toggleDropdownPosition()">
-                <select id="daySelect" class="dateSelect">
-                    <option value="">Day</option>
-                </select>
-
-                <select id="MonthSelect" class="dateSelect">
-                    <option value="">Day</option>
-                </select>
-
-                <select id="yearSelect" class="dateSelect">
-                    <option value="">Day</option>
-                </select>
+                
                 
             </div>
         </div>
         <div id="rightContainer">
             <div id="bottomOne" class="bottomElm">
-                <p class="inlineData">Control the Graph </p>
-                <p class="inlineData"> Here<p2>
+                <div id="dateLine"></div>
+                <div id="dateSub" class="dateArrow" onclick="plusOrAddToDate(this)"></div>
+                <div id="dateAdd" class="dateArrow" onclick="plusOrAddToDate(this)"></div>
+
+                <div id="dateLeftSelect">
+                    
+                </div>
+                
+                <div id="leftInfoDate">
+                    <p>01/02/2021</p>
+                </div>
+                    
             </div>
             <div id="bottomTwo" class="bottomElm">
                 <h2>Info about work goes here</h2>
@@ -58,6 +58,7 @@
                 <h3>Reproofs make up 30% of all proofs</h3>
                 <h3>Outputs are down 20%</h3>
                 <h3>Reproofs are down 2%</h3>
+                <h3>30% of work outsourced</h3>
 
             </div>
             

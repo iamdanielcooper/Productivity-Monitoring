@@ -130,6 +130,8 @@ async function loadMonthData() {
 
   let average = averageTotal / (finalData.length - 1)
 
+  average = average.toFixed(0)
+
   for (let i = 0; i < finalData.length; i++) {
     averageArray.push(average)
   }

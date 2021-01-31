@@ -153,6 +153,8 @@ function toggleDropdownPosition() {
   
     // final string formatting. this formatting matches how the HTML date input date displays.
   
+    
+
     document.getElementById("dateDispay").innerText = `${year}-${months}-${day}`;
     return;
   }
@@ -162,5 +164,38 @@ function toggleDropdownPosition() {
     return `RGBA(${red},${green},${blue},${opacity / 100})`;
   }
   
+
+  function displayTotals(obj) {
+    
+  }
+
+
+  function toggleDateView(date) {
+
+    // check how the date is laid out.
+    // split input into an array and remove the '-'
+    let dateArr = date.split('-')
+
+    // if the first element in the array has a length of 4 it is database format.
+
+    if (dateArr[0].length === 4) {
+      // reformat the date for display and return it.
+      return `${dateArr[2]}-${dateArr[1]}-${dateArr[0]}`
+    } else {
+      // reformat the date for the Database and return it.
+      return `${dateArr[2]}-${dateArr[1]}-${dateArr[0]}`
+    }
+  }
+
+  function plusOrAddToDate(elm) {
+    console.log(elm.id)
+    if (elm.id == 'dateAdd') {
+      console.log('Add to date')
+    } else {
+      console.log('Subtract to date')
+    }
+  }
+
+
   setDate();
   main()
