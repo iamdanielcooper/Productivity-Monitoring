@@ -60,6 +60,7 @@ async function findInDB(input) {
 
     try {
     result = await collection.findOne(input);
+
     if (result == null) {
         await client.close
         return false
@@ -78,6 +79,7 @@ async function insertToDB(input, search) {
     // Generic DB access protocol
     const uri = process.env.KEY;
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
     await client.connect()
     const database = client.db("artwork-data");
     const collection = database.collection('workload')
