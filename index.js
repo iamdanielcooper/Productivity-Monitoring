@@ -1,25 +1,22 @@
 const { request, json } = require('express');
 const express = require('express')
-// const Database = require('nedb') // The first version of this used nedb. but i'm moving it to a mongoDB database.
 const {MongoClient} = require('mongodb');
 const mongojs = require('mongojs')
 
 require('dotenv').config()
 
-
-
 const app = express()
-
-// const proofDatabase = new Database('proofData.db')
-
 app.use(express.json());
+app.use(express.static('public'))
+
+
 
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`listening`)
 })
 
-app.use(express.static('public'))
+
 
 
 app.post('/find', async (req, res) => {
@@ -27,7 +24,7 @@ app.post('/find', async (req, res) => {
 
     
     db.workload.find(req.body, function (err, docs) {
-        res.json(docs)
+        res.json(docs) // send back the documents that are found
         console.log(docs)
 })
 
@@ -40,12 +37,13 @@ app.post('/find', async (req, res) => {
 // this listens for the submit from the frontend and then adds the result to a database.
 app.post('/api', (request, response) => {
     const input = request.body 
-    const search = {}
 
+    // this search is used to check if the user already has an entry under this data.
+    const search = {}
     search.user = input.user
     search.date = input.date
 
-   // pass the new data to the insert function which will process it.
+    // pass the new data to the insert function which will process it.
     insertToDB(input, search)
     });
 
@@ -85,9 +83,6 @@ async function insertToDB(input, search) {
     const collection = database.collection('workload')
 
     try {
-
-
-    //TODO Find ask the server if the search pulls anything up
     
     let searchResult = await findInDB(search)
         
