@@ -1,0 +1,218 @@
+body {
+  background: rgb(228, 228, 228);
+  /*background: linear-gradient(
+    0deg,
+    rgba(200, 200, 200, 1) 0%,
+    rgba(203, 203, 203, 1) 77%,
+    rgba(232, 232, 232, 1) 100%
+  );*/
+  font-family: "Cutive Mono", monospace;
+}
+#mainBody {
+  position: relative;
+  top: 55px;
+  z-index: -10;
+}
+#main {
+  background-color: rgb(255, 255, 255);
+
+  width: 60vw;
+  height: auto;
+
+  border-radius: 25px;
+
+  margin: auto;
+  padding: 25px 40px 25px 40px;
+
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  filter: drop-shadow(0px 4px 2px #b8b8b8);
+}
+#buttonContainer {
+  background-color: rgb(255, 255, 255);
+
+  width: 60vw;
+  height: auto;
+
+  border-radius: 25px;
+
+  margin: auto;
+  padding: 25px 40px 25px 40px;
+
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  filter: drop-shadow(0px 4px 2px #b8b8b8);
+}
+
+.dataSelectInputs {
+  margin: 10px 0px 10px 0px;
+}
+
+#date {
+  display: block;
+  width: 60vw;
+  height: 35px;
+}
+
+#userSubmit {
+  width: 80vw;
+  margin: auto;
+  display: block;
+  text-align: center;
+  margin-bottom: 25px;
+}
+#dataPull {
+  width: 80vw;
+  margin: auto;
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+}
+
+#header {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.buttons {
+  width: 100px;
+  height: 60px;
+  background-color: rgb(113, 180, 192);
+  margin: 10px;
+  margin-bottom: 50px;
+}
+.buttonLabels {
+  position: relative;
+  top: -178px;
+  text-align: center;
+  font-size: 17px;
+}
+.value {
+  text-align: center;
+  font-size: 40px;
+  position: relative;
+  top: -150px;
+}
+#leadtimeDisplay {
+  text-align: center;
+}
+#leadtimeContainer {
+  display: flex;
+  width: 60vw;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 0px;
+  position: sticky;
+  top: 0px;
+}
+.leadtime {
+  position: relative;
+  top: 0px;
+}
+.minusButton {
+  width: 50px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.562);
+  position: relative;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  z-index: 10;
+}
+.minusButton:hover {
+  opacity: 0.2;
+}
+.plusButton {
+  width: 50px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.562);
+  position: relative;
+  top: -60px;
+  left: 50px;
+  opacity: 0;
+  z-index: 10;
+}
+.plusButton:hover {
+  opacity: 0.2;
+}
+.footer {
+  margin-top: 20px;
+}
+#userSubmit {
+  margin-top: 20px;
+  border-radius: 20px;
+}
+button {
+  width: 60vw;
+  height: 45px;
+  border-style: none;
+}
+select {
+  width: 60vw;
+  height: 35px;
+  border-radius: 20px;
+}
+
+#myChart {
+  width: 80vw;
+  height: 200px;
+}
+
+nav {
+  background-color: #3e8dd6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+
+  width: 100vw;
+  height: 30px;
+
+  border-radius: 0px 0px 25px 25px;
+}
+.navLinks {
+  text-decoration: none;
+  margin: 25px 40px 25px 50px;
+  color: rgb(255, 255, 255);
+  font-size: 22px;
+  text-align: center;
+  z-index: 1000;
+}
+.navLinks:hover {
+  color: rgb(71, 71, 71);
+  font-weight: 700;
+}
+button {
+  background: rgb(86, 78, 222);
+  background: linear-gradient(
+    90deg,
+    rgba(86, 78, 222, 1) 0%,
+    rgba(63, 63, 191, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border-radius: 20px;
+  color: aliceblue;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+button:hover {
+  filter: drop-shadow(0px 4px 2px #8b8bd4);
+  position: relative;
+  bottom: 5px;
+}
+
+img {
+  width: 500px;
+}
+#dropMain {
+  position: relative;
+  top: 25px;
+}

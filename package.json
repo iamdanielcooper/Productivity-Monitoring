@@ -1,0 +1,27 @@
+{
+  "name": "productivity-monitoring",
+  "version": "1.0.0",
+  "description": "Productivity tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danjcooper/Productivity-Monitoring.git"
+  },
+  "author": "Daniel Cooper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danjcooper/Productivity-Monitoring/issues"
+  },
+  "homepage": "https://github.com/danjcooper/Productivity-Monitoring#readme",
+  "dependencies": {
+    "chart.js": "^2.9.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongojs": "^3.1.0",
+    "nedb": "^1.8.0"
+  }
+}
