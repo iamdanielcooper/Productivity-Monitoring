@@ -14,34 +14,9 @@
   </head>
 
   <body>
-    <div id="navbody">
-      <nav>
-        <a
-          href="https://return-of-prodman.herokuapp.com/data/index.html"
-          class="navLinks"
-          >View Data</a
-        >
-        <a href="aboutIndex.html" class="navLinks">About this Project</a>
-        <a href="#" class="navLinks">Contact</a>
-      </nav>
-    </div>
+    
     <div id="dropMain">
-      <div id="leadtimeDisplay">
-        <div id="leadtimeContainer">
-          <div class="leadtime">
-            <h3>5 days</h3>
-            <h3 id="fiveDays">00/00</h3>
-          </div>
-          <div class="leadtime">
-            <h3>7 days</h3>
-            <h3 id="sevenDays">00/00</h3>
-          </div>
-          <div class="leadtime">
-            <h3>10 days</h3>
-            <h3 id="tenDays">00/00</h3>
-          </div>
-        </div>
-      </div>
+      
 
       <div id="main">
         <div id="userSubmit" class="footer">
@@ -55,7 +30,7 @@
           <br />
         </div>
 
-        <div class="buttons">
+        <div class="buttons" id="test">
           <div class="minusButton" onclick="logWorkDone('proofs', '-')"></div>
           <div class="plusButton" onclick="logWorkDone('proofs', '+')"></div>
           <h3 id="proofs" class="value">0</h3>
@@ -164,6 +139,24 @@
           </select>
         </div>
       </div>
+
+      <div id="leadtimeDisplay">
+        <div id="leadtimeContainer">
+          <div class="leadtime">
+            <h3>5 days</h3>
+            <h3 id="fiveDays">00/00</h3>
+          </div>
+          <div class="leadtime">
+            <h3>7 days</h3>
+            <h3 id="sevenDays">00/00</h3>
+          </div>
+          <div class="leadtime">
+            <h3>10 days</h3>
+            <h3 id="tenDays">00/00</h3>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <script src="main.js"></script>

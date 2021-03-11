@@ -99,18 +99,21 @@ output.date = `${year}-${months}-${day}`
   fetch("/api", options);
   console.log("Success");
 
-  addTimestamp('submitTimestamp')
+  addTimestamp()
 }
 
-// This function abstracts away processing the current dispatch date. It takes one argument, a number of working days for dispatch. No need to account for weekends or holidays, this function takes those into account and returns the correct dispatch date.
+
 function getCurrentDateDDMM(days) {
+
+  // This function abstracts away processing the current dispatch date. It takes one argument, a number of working days for dispatch. No need to account for weekends or holidays, this function takes those into account and returns the correct dispatch date.
+
   let outputDate = new Date();
   let outputString = "";
   let day, month;
 
   for (let i = 0; i < days; i++) {
     outputDate.setDate(outputDate.getDate() + 1);
-    // This calls the getDay() method to check if it's the weekend. if it is it reduces  the counter so it accounts for the extra days. this helps abstract away the  input days.
+    // This calls the getDay() method to check if it's the weekend. if it is it reduces the counter so it accounts for the extra days. this helps abstract away the  input days.
     if (outputDate.getDay() == 0 || outputDate.getDay() == 6) {
       i--;
     }
@@ -191,24 +194,25 @@ async function getLoggedData() {
   startLoadLogging()
 }
 
+
+
+
 function getDate() {
   let now = new Date()
+
   let months = now.getMonth() + 1
   let day = now.getDate()
   let year = now.getFullYear()
 
-  if (day < 10) {
-    day = '0' + day
-  }
-  if (months < 10) {
-    months = '0' + months
-  }
+  //  turns 1-1-2021 to 01-01-2021 -  this is formats it properly for the database
+  day = (day < 10) ? `0${day}` : day
+  months = (months < 10) ? `0${months}` : months
 
   // final string formatting. this formatting matches how the HTML date input date displays.
   return `${year}-${months}-${day}`
 }
 
-function hideDataPullOnceUSed() {
+function hideDataPullOnceUsed() {
   document.getElementById('dataPullSelect').disabled = true
   console.log('hidden')
 }
@@ -217,19 +221,37 @@ function hideDataPullOnceUSed() {
 function startLoadLogging() {
   console.log('data now live')
   var myVar
-  myvar = setInterval(submit, 900000) // this updates the data 
+  myvar = setInterval(submit, 900000) // this updates the data at certain time intervals
 }
 
-function addTimestamp(element) {
+function addTimestamp() {
   let time = new Date()
-  let hour = time.getHours()
-  let  mins = time.getMinutes()
-  if (mins < 10) {
-    mins = `0${mins}`
-  }
-  if (hour < 10) {
-    hour = `0${hour}`
-  }
 
-  document.getElementById(element).innerHTML = `last submit ${hour}:${mins}`
+  // Get the hours & minutes
+  let hours = time.getHours()
+  let minutes = time.getMinutes()
+
+  // This turns 9:9 to 09:09
+  minutes = (mins < 10) ? `0${minutes}` : minutes
+  hours = (hours < 10) ? `0${hours}` : hours
+
+  // Updates the Document
+  document.getElementById('submitTimestamp').innerHTML = `last submit ${hours}:${minutes}`
 }
+
+
+
+
+
+document.querySelectorAll('.plusButton').forEach(item => {
+  item.addEventListener('click', event => {
+    alert(event.target.className)
+
+    let IDofCaller = event.target.parentNode.id
+
+    let docRef = document.getElementById(IDofCaller)
+
+    docRef.style.backgroundColor = 'pink'
+
+  })
+})
