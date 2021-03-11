@@ -11,7 +11,12 @@ var output = {
   other: 0,
 };
 
-
+// TODO 
+//=============
+/*
+   Process the output object from an array. this will make it easier to update through looping through the array rather than having it hard coded in multiple places.
+*/
+//=========
 
 // fill this Object with all the holidays for the next year and it will also take those into account when processing the despatch date.
 
@@ -31,7 +36,7 @@ document.getElementById("fiveDays").innerHTML = getCurrentDateDDMM(5);
 document.getElementById("sevenDays").innerHTML = getCurrentDateDDMM(7);
 document.getElementById("tenDays").innerHTML = getCurrentDateDDMM(10);
 
-// element is the dom reference and modifier is wether the button is plus or minus
+/*
 function logWorkDone(element, modifier) {
   let docRef = document.getElementById(element);
   // get current value
@@ -57,6 +62,7 @@ function logWorkDone(element, modifier) {
   }
   console.log(output);
 }
+*/
 
 // Process and submit the
 function submit() {
@@ -69,22 +75,8 @@ function submit() {
   } else {
     //  Add user to the output object
     output.user = docRef.value
+    output.date = getDate()
   }
-  // add date to the object
-let now = new Date()
-let months = now.getMonth() + 1
-let day = now.getDate()
-let year = now.getFullYear()
-
-if (day < 10) {
-  day = '0' + day
-}
-if (months < 10) {
-  months = '0' + months
-}
-
-// final string formatting. this formatting matches how the HTML date input date displays.
-output.date = `${year}-${months}-${day}`
 
   const options = {
     method: "POST",
@@ -232,26 +224,36 @@ function addTimestamp() {
   let minutes = time.getMinutes()
 
   // This turns 9:9 to 09:09
-  minutes = (mins < 10) ? `0${minutes}` : minutes
+  minutes = (minutes < 10) ? `0${minutes}` : minutes
   hours = (hours < 10) ? `0${hours}` : hours
 
-  // Updates the Document
-  document.getElementById('submitTimestamp').innerHTML = `last submit ${hours}:${minutes}`
+  return `${hours}:${minutes}`
 }
 
 
 
 
 
-document.querySelectorAll('.plusButton').forEach(item => {
+document.querySelectorAll('.button').forEach(item => {
   item.addEventListener('click', event => {
-    alert(event.target.className)
+    
 
-    let IDofCaller = event.target.parentNode.id
+    let IDofCaller = event.target.parentNode.id // The ID of the parent is the name of what needs to be updated in the output object
 
     let docRef = document.getElementById(IDofCaller)
 
-    docRef.style.backgroundColor = 'pink'
+    // 
+    output[IDofCaller] = (event.target.className == 'button plus') ? output[IDofCaller] + 1 : output[IDofCaller] - 1
 
+    if (output[IDofCaller] < 0) {
+      console.log('Err: Negative number entered')
+      return
+    }
+
+    console.log(output)
+
+    docRef.querySelector('.itemCount').innerText = output[IDofCaller]
+
+    docRef.querySelector('.timeStamp').innerText = addTimestamp()
   })
 })

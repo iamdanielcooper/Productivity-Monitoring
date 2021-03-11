@@ -6,11 +6,8 @@
     <title>Dashboard</title>
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital@1&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -30,99 +27,26 @@
           <br />
         </div>
 
-        <div class="buttons" id="test">
-          <div class="minusButton" onclick="logWorkDone('proofs', '-')"></div>
-          <div class="plusButton" onclick="logWorkDone('proofs', '+')"></div>
-          <h3 id="proofs" class="value">0</h3>
+        <div class="buttons" id="proofs"> <!-- This ID is passed to the output object-->
+          <div class="button minus"></div> <!-- Class names are checked to see if it's an add or minus-->
+          <div class="button plus"></div>
+          <h3 class="itemCount">0</h3>
+          <p class="timeStamp">0</p>
           <h2 class="buttonLabels">Proofs V1</h2>
+          
         </div>
 
-        <div class="buttons">
-          <div class="minusButton" onclick="logWorkDone('reproofs', '-')"></div>
-          <div class="plusButton" onclick="logWorkDone('reproofs', '+')"></div>
-          <h3 id="reproofs" class="value">0</h3>
+        <div class="buttons" id="reproofs"> <!-- This ID is passed to the output object-->
+          <div class="button minus"></div> <!-- Class names are checked to see if it's an add or minus-->
+          <div class="button plus"></div>
+          <h3 class="itemCount">0</h3>
+          <p class="timeStamp">0</p>
           <h2 class="buttonLabels">Reproofs</h2>
         </div>
 
-        <div class="buttons">
-          <div
-            class="minusButton"
-            onclick="logWorkDone('multipage', '-')"
-          ></div>
-          <div class="plusButton" onclick="logWorkDone('multipage', '+')"></div>
-          <h3 id="multipage" class="value">0</h3>
-          <h2 class="buttonLabels">Multipage V1</h2>
-        </div>
 
-        <div class="buttons">
-          <div
-            class="minusButton"
-            onclick="logWorkDone('multipageReproof', '-')"
-          ></div>
-          <div
-            class="plusButton"
-            onclick="logWorkDone('multipageReproof', '+')"
-          ></div>
-          <h3 id="multipageReproof" class="value">0</h3>
-          <h2 class="buttonLabels">Multipage V2+</h2>
-        </div>
 
-        <div class="buttons">
-          <div class="minusButton" onclick="logWorkDone('visuals', '-')"></div>
-          <div class="plusButton" onclick="logWorkDone('visuals', '+')"></div>
-          <h3 id="visuals" class="value">0</h3>
-          <h2 class="buttonLabels">Visuals</h2>
-        </div>
 
-        <div class="buttons">
-          <div
-            class="minusButton"
-            onclick="logWorkDone('visualReproof', '-')"
-          ></div>
-          <div
-            class="plusButton"
-            onclick="logWorkDone('visualReproof', '+')"
-          ></div>
-          <h3 id="visualReproof" class="value">0</h3>
-          <h2 class="buttonLabels">Visual V2+</h2>
-        </div>
-
-        <div class="buttons">
-          <div
-            class="minusButton"
-            onclick="logWorkDone('approvals', '-')"
-          ></div>
-          <div class="plusButton" onclick="logWorkDone('approvals', '+')"></div>
-          <h3 id="approvals" class="value">0</h3>
-          <h2 class="buttonLabels">Approvals</h2>
-        </div>
-
-        <div class="buttons">
-          <div
-            class="minusButton"
-            onclick="logWorkDone('preapproved', '-')"
-          ></div>
-          <div
-            class="plusButton"
-            onclick="logWorkDone('preapproved', '+')"
-          ></div>
-          <h3 id="preapproved" class="value">0</h3>
-          <h2 class="buttonLabels">Pre Approved</h2>
-        </div>
-
-        <div class="buttons">
-          <div class="minusButton" onclick="logWorkDone('outputs', '-')"></div>
-          <div class="plusButton" onclick="logWorkDone('outputs', '+')"></div>
-          <h3 id="outputs" class="value">0</h3>
-          <h2 class="buttonLabels">Outputs</h2>
-        </div>
-
-        <div class="buttons">
-          <div class="minusButton" onclick="logWorkDone('other', '-')"></div>
-          <div class="plusButton" onclick="logWorkDone('other', '+')"></div>
-          <h3 id="other" class="value">0</h3>
-          <h2 class="buttonLabels">Other</h2>
-        </div>
 
         <button type="submit" class="footer" onclick="submit()">Submit</button>
         <p id="submitTimestamp" class="timestamp"></p>
