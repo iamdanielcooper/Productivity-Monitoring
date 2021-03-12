@@ -14,9 +14,64 @@ var output = {
 // TODO 
 //=============
 /*
-   Process the output object from an array. this will make it easier to update through looping through the array rather than having it hard coded in multiple places.
+   Process the output object from an array. this will make it easier to update through looping through the array rather than having it hard coded in multiple places.   
 */
 //=========
+
+
+
+
+const objectItems = [
+  'proofs',
+  'reproofs',
+  'multipage',
+  'multipageReproof',
+  'visuals',
+  'visualReproof',
+  'approvals',
+  'preapproved',
+  'outputs',
+  'other', 
+  'Breakdown Issues'
+]
+
+for (let i = 0; i < objectItems.length; i++) {
+  
+  createHTMLObject(objectItems[i])
+}
+
+function createHTMLObject(objectItemName) {
+  // Create container Object
+  let htmlElement = document.createElement('div')
+  htmlElement.id = objectItemName
+  htmlElement.className = 'buttons'
+
+  let minusButton = document.createElement('div')
+  minusButton.className = 'button minus'
+  htmlElement.appendChild(minusButton)
+
+  let plusButton = document.createElement('div')
+  plusButton.className = 'button plus'
+  htmlElement.appendChild(plusButton)
+
+  let itemCount = document.createElement('h3')
+  itemCount.className = 'itemCount'
+  itemCount.innerText = 0
+  htmlElement.appendChild(itemCount)
+
+  let timeStamp = document.createElement('p')
+  timeStamp.className = 'timeStamp'
+  timeStamp.innerText = '00:00'
+  htmlElement.appendChild(timeStamp)
+
+  let label = document.createElement('h2')
+  label.className = 'buttonLabels'
+  label.innerText = objectItemName
+  htmlElement.appendChild(label)
+
+  document.getElementById('main').appendChild(htmlElement)
+
+}
 
 // fill this Object with all the holidays for the next year and it will also take those into account when processing the despatch date.
 
