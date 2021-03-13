@@ -1,25 +1,8 @@
-var output = {
-  proofs: 0,
-  reproofs: 0,
-  multipage: 0,
-  multipageReproof: 0,
-  visuals: 0,
-  visualReproof: 0,
-  approvals: 0,
-  preapproved: 0,
-  outputs: 0,
-  other: 0,
-};
-
-// TODO 
-//=============
-/*
-   Process the output object from an array. this will make it easier to update through looping through the array rather than having it hard coded in multiple places.   
-*/
-//=========
-
-
-
+// TODO
+//====
+  //* update the Part that pulls data so it puts it in the right places.
+  //* Stramline it it's no longer hard coded.
+//====
 
 const objectItems = [
   'proofs',
@@ -32,15 +15,21 @@ const objectItems = [
   'preapproved',
   'outputs',
   'other', 
-  'Breakdown Issues'
+  'breakdownIssues',
+  'Tigers',
+  'exampleWithThree'
 ]
 
+const output = {}; // initalise an empty object
+
 for (let i = 0; i < objectItems.length; i++) {
-  
-  createHTMLObject(objectItems[i])
+  output[objectItems[i]] = 0 // add the element to the object and set the value to zero
+  createHTMLObject(objectItems[i]) // make and add the element to the DOM
 }
 
+
 function createHTMLObject(objectItemName) {
+
   // Create container Object
   let htmlElement = document.createElement('div')
   htmlElement.id = objectItemName
@@ -66,7 +55,7 @@ function createHTMLObject(objectItemName) {
 
   let label = document.createElement('h2')
   label.className = 'buttonLabels'
-  label.innerText = objectItemName
+  label.innerText = displayName(objectItemName)
   htmlElement.appendChild(label)
 
   document.getElementById('main').appendChild(htmlElement)
@@ -87,37 +76,31 @@ const holidays = {
 };
 
 // these update the dispatch dates. put the number of days as the argument
-document.getElementById("fiveDays").innerHTML = getCurrentDateDDMM(5);
-document.getElementById("sevenDays").innerHTML = getCurrentDateDDMM(7);
-document.getElementById("tenDays").innerHTML = getCurrentDateDDMM(10);
+document.getElementById("fiveDays").innerHTML = `5 Days: ${getCurrentDateDDMM(5)}`;
+document.getElementById("sevenDays").innerHTML = `7 Days: ${getCurrentDateDDMM(7)}`;
+document.getElementById("tenDays").innerHTML = `10 Days: ${getCurrentDateDDMM(10)}`;
 
-/*
-function logWorkDone(element, modifier) {
-  let docRef = document.getElementById(element);
-  // get current value
-  let currentValue = parseInt(docRef.textContent);
-  // update the DOM with the new value
-  if (modifier == "+") {
-    docRef.innerText = currentValue + 1;
-    output[element] = currentValue + 1;
-  } else if (modifier == "-") {
-    // Error check for negative Numbers
-    if (currentValue <= 0) {
-      console.log("error: Negative Number Entered");
-      return;
+
+
+function displayName(name) {
+
+  let nameArray = name.split('')
+
+  for (let i = 0; i < nameArray.length; i++) {
+
+    if (i == 0) {
+      nameArray[i] = nameArray[i].toUpperCase() // make the first letter capital
+    } else if (nameArray[i] == nameArray[i].toUpperCase()) {
+      // If it finds a capital splice in a space
+      nameArray.splice(i, 1, ` ${nameArray[i].toUpperCase()}`)
     }
-    // update the DOM
-    docRef.innerText = currentValue - 1;
-    // Update to output object
-    output[element] = currentValue - 1;
-  } else {
-    // Error Handling if the modifier is missing
-    console.log("error");
-    return;
   }
-  console.log(output);
+
+  // Put the string back together
+  let displayName = nameArray.join()
+  displayName = displayName.replace(/,/g, '')
+  return displayName
 }
-*/
 
 // Process and submit the
 function submit() {
