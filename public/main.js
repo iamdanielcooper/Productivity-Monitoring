@@ -1,9 +1,3 @@
-// TODO
-//====
-  //* update the Part that pulls data so it puts it in the right places.
-  //* Stramline it it's no longer hard coded.
-//====
-
 const objectItems = [
   'proofs',
   'reproofs',
@@ -17,16 +11,29 @@ const objectItems = [
   'other', 
   'breakdownIssues',
   'Tigers',
-  'exampleWithThree'
+  'exampleWithThree',
+  'oneMoreExample'
 ]
 
-const output = {}; // initalise an empty object
+const holidays = {
+  xmascutoff: "22/12",
+  boxingDay: "24/12",
+  christmas: "25/12",
+  christmasBreak: "28/12",
+  christmasBreak2: "29/12",
+  christmasBreak3: "30/12",
+  christmasBreak5: "31/12",
+  newYearsDay: "1/1",
+};
 
-for (let i = 0; i < objectItems.length; i++) {
-  output[objectItems[i]] = 0 // add the element to the object and set the value to zero
-  createHTMLObject(objectItems[i]) // make and add the element to the DOM
+var output = {}; // initalise an empty object
+
+function main() {
+  for (let i = 0; i < objectItems.length; i++) {
+    output[objectItems[i]] = 0 // add the element to the object and set the value to zero
+    createHTMLObject(objectItems[i]) // make and add the element to the DOM
+  }
 }
-
 
 function createHTMLObject(objectItemName) {
 
@@ -61,26 +68,6 @@ function createHTMLObject(objectItemName) {
   document.getElementById('main').appendChild(htmlElement)
 
 }
-
-// fill this Object with all the holidays for the next year and it will also take those into account when processing the despatch date.
-
-const holidays = {
-  xmascutoff: "22/12",
-  boxingDay: "24/12",
-  christmas: "25/12",
-  christmasBreak: "28/12",
-  christmasBreak2: "29/12",
-  christmasBreak3: "30/12",
-  christmasBreak5: "31/12",
-  newYearsDay: "1/1",
-};
-
-// these update the dispatch dates. put the number of days as the argument
-document.getElementById("fiveDays").innerHTML = `5 Days: ${getCurrentDateDDMM(5)}`;
-document.getElementById("sevenDays").innerHTML = `7 Days: ${getCurrentDateDDMM(7)}`;
-document.getElementById("tenDays").innerHTML = `10 Days: ${getCurrentDateDDMM(10)}`;
-
-
 
 function displayName(name) {
 
@@ -131,7 +118,6 @@ function submit() {
 
   addTimestamp()
 }
-
 
 function getCurrentDateDDMM(days) {
 
@@ -194,38 +180,33 @@ async function getLoggedData() {
   const data = await response.json();
   const parsedData = data[0]
 
+
   if (parsedData == undefined) {
     console.log('Err: No Data Found')
     return
   }
 
-  //update the DOM with the data from the database
-  document.getElementById('proofs').innerText = parsedData.proofs
-  document.getElementById('reproofs').innerText = parsedData.reproofs
-  document.getElementById('multipage').innerText = parsedData.multipage
-  document.getElementById('multipageReproof').innerText = parsedData.multipageReproof
-  document.getElementById('visuals').innerText = parsedData.visuals
-  document.getElementById('visualReproof').innerText = parsedData.visualReproof
-  document.getElementById('outputs').innerText = parsedData.outputs
-  document.getElementById('other').innerText = parsedData.other
-  document.getElementById('approvals').innerText = parsedData.approvals
-  document.getElementById('preapproved').innerText = parsedData.preapproved
-
-  
-  
-  //update the output object to match the pased Dada, without this any unchanged values revert to zero when submitted.
+  for (const key in parsedData) {
+   
+    if (document.getElementById(key) == null) {
+      // If the element doesn't exist on the page, like date or ID
+      continue
+    } else if (document.getElementById(key).querySelector('.itemCount') != null) {
+      // If the key has a item count, update it
+      document.getElementById(key).querySelector('.itemCount').innerText = parsedData[key]
+    }
+    
+  }
+ 
+  //update the output object to match the passed Dada, without this any unchanged values revert to zero when submitted.
   output = parsedData
-  console.log(parsedData)
-
+ 
   // Update the User Select to the user chosen to pull the data from.
   document.getElementById('user').value = parsedData.user
   user
   //Start pushing the data to the server
   startLoadLogging()
 }
-
-
-
 
 function getDate() {
   let now = new Date()
@@ -246,7 +227,6 @@ function hideDataPullOnceUsed() {
   document.getElementById('dataPullSelect').disabled = true
   console.log('hidden')
 }
-
 
 function startLoadLogging() {
   console.log('data now live')
@@ -270,7 +250,7 @@ function addTimestamp() {
 
 
 
-
+main()
 
 document.querySelectorAll('.button').forEach(item => {
   item.addEventListener('click', event => {
@@ -295,3 +275,34 @@ document.querySelectorAll('.button').forEach(item => {
     docRef.querySelector('.timeStamp').innerText = addTimestamp()
   })
 })
+
+// these update the dispatch dates. put the number of days as the argument
+document.getElementById("fiveDays").innerHTML = `5 Days: ${getCurrentDateDDMM(5)}`;
+document.getElementById("sevenDays").innerHTML = `7 Days: ${getCurrentDateDDMM(7)}`;
+document.getElementById("tenDays").innerHTML = `10 Days: ${getCurrentDateDDMM(10)}`;
+
+// Open and close side menu
+document.getElementById('menuOpenClose').addEventListener('click', (e) => {
+  let docRef = document.getElementById('menu')
+
+  if (docRef.style.left == '0px') {
+    docRef.style.left = '-250px'
+    document.getElementById('menuOpenClose').querySelector('p').innerText = '>'
+  } else {
+    docRef.style.left = '0px'
+    document.getElementById('menuOpenClose').querySelector('p').innerText = '<'
+  }
+})
+
+document.getElementById('dataPullSelect').addEventListener('change', (e) => {
+  getLoggedData()
+  document.getElementById('dataPullSelect').hidden = true
+})
+
+document.getElementById('loadPreviousData').addEventListener('click', (e) => {
+  if (document.getElementById('dataPullSelect').hidden == true) {
+    console.log('hidden')
+    document.getElementById('dataPullSelect').removeAttribute('hidden')
+  }
+})
+

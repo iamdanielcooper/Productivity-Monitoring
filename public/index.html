@@ -27,49 +27,58 @@
           <br />
         </div>
 
-        <div class="buttons" id="proofs"> <!-- This ID is passed to the output object-->
-          <div class="button minus"></div> <!-- Class names are checked to see if it's an add or minus-->
+        <!-- This is the button structure, for reference.
+        <div class="buttons" id="proofs"> This ID is passed to the output object
+          <div class="button minus"></div> Class names are checked to see if it's an add or minus-
           <div class="button plus"></div>
           <h3 class="itemCount">0</h3>
           <p class="timeStamp">0</p>
           <h2 class="buttonLabels">Proofs V1</h2>
-          
         </div>
+      -->
 
+      </div>
 
-
-
-
-        <button type="submit" class="footer" onclick="submit()">Submit</button>
+      <button type="submit" class="footer" onclick="submit()">Submit</button>
         <p id="submitTimestamp" class="timestamp"></p>
 
-        <div id="dataPull" onchange="getLoggedData()">
-          <select id="dataPullSelect" onchange="hideDataPullOnceUSed()">
-            <option value="" disabled="true" selected="true">
-              Load Your Data
-            </option>
-            <option value="Dan">Dan</option>
-            <option value="Bex">Bex</option>
-            <option value="Ollie">Ollie</option>
-            <option value="Ben">Ben</option>
-          </select>
-        </div>
+      <p id="loadPreviousData">Load Data</p>
+
+      <div id="dataPull">
+        <select id="dataPullSelect" hidden>
+          <option value="" disabled="true" selected="true">
+            Load Your Data
+          </option>
+          <option value="Dan">Dan</option>
+          <option value="Bex">Bex</option>
+          <option value="Ollie">Ollie</option>
+          <option value="Ben">Ben</option>
+        </select>
       </div>
 
-      <div id="leadtimeDisplay">
-        <div id="leadtimeContainer">
-          <div class="leadtime">
-            <h3 id="fiveDays">00/00</h3>
-          </div>
-          <div class="leadtime">
-            <h3 id="sevenDays">00/00</h3>
-          </div>
-          <div class="leadtime">
-            <h3 id="tenDays">00/00</h3>
-          </div>
-        </div>
-      </div>
+    
 
+    </div>
+
+    <div id="menu">
+      <div id="menuItems">
+        <ul>
+          <li><a href="#">Daily Breakdown</a></li>
+          <li><a href="#">Monthly Breakdown</a></li>
+          <li><a href="#">About This Project</a></li>
+          <br><br>
+
+
+          <p id="fiveDays">00/00</p>
+          <p id="sevenDays">00/00</p>
+          <p id="tenDays">00/00</p>
+
+          <p>© Daniel Cooper</p>
+        </ul>
+      </div>
+      <div id="menuOpenClose">
+        <p>></p>
+      </div>
     </div>
 
     <script src="main.js"></script>

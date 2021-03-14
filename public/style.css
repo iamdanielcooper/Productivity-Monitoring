@@ -6,12 +6,15 @@ body {
     rgba(203, 203, 203, 1) 77%,
     rgba(232, 232, 232, 1) 100%
   );*/
+
   font-family: "Mulish", sans-serif;
 }
+
 #mainBody {
   position: relative;
   top: 55px;
   z-index: -10;
+  text-align: center;
 }
 #main {
   background-color: rgb(255, 255, 255);
@@ -26,6 +29,8 @@ body {
 
   display: flex;
   justify-content: center;
+
+  text-align: center;
 
   flex-wrap: wrap;
 
@@ -84,7 +89,7 @@ body {
 .buttons {
   width: 100px;
   height: 60px;
-  background-color: rgb(113, 180, 192);
+  background-color: #a8d0e6;
   margin: 10px;
   margin-bottom: 50px;
 }
@@ -128,6 +133,7 @@ body {
 }
 .minus:hover {
   opacity: 0.2;
+  cursor: pointer;
 }
 .plus {
   width: 50px;
@@ -141,6 +147,7 @@ body {
 }
 .plus:hover {
   opacity: 0.2;
+  cursor: pointer;
 }
 .timeStamp {
   position: relative;
@@ -162,7 +169,7 @@ button {
   border-style: none;
 }
 select {
-  width: 60vw;
+  width: 200px;
   height: 35px;
   border-radius: 20px;
 }
@@ -173,22 +180,18 @@ select {
 }
 
 button {
-  background: rgb(86, 78, 222);
-  background: linear-gradient(
-    90deg,
-    rgba(86, 78, 222, 1) 0%,
-    rgba(63, 63, 191, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
+  background: #70a7c5;
+
+  width: 200px;
   border-radius: 20px;
   color: aliceblue;
   font-size: 25px;
   text-transform: uppercase;
+  position: relative;
 }
 button:hover {
-  filter: drop-shadow(0px 4px 2px #8b8bd4);
-  position: relative;
-  bottom: 5px;
+  background-color: #4381a1;
+  cursor: pointer;
 }
 
 img {
@@ -197,4 +200,52 @@ img {
 #dropMain {
   position: relative;
   top: 25px;
+  text-align: center;
+}
+#menu {
+  width: 300px;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: -250px;
+
+  background-color: #a8d0e6c9;
+
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  grid-template-rows: 1fr;
+
+  transition: 0.5s;
+}
+#menuOpenClose {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+
+  background-color: #a8d0e6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+}
+#menuOpenClose:hover {
+  cursor: pointer;
+  background-color: #70a7c5;
+}
+#menuOpenClose p {
+  font-size: 40px;
+}
+#menuItems {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+}
+#loadPreviousData {
+  text-align: center;
+  display: inline-block;
+  text-align: center;
+}
+#loadPreviousData:hover {
+  cursor: pointer;
+  color: #70a7c5;
 }
