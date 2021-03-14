@@ -12,8 +12,6 @@
     <title>Data View</title>
 </head>
 <body>
-    <a href="https://return-of-prodman.herokuapp.com/">Data Input Page</a>
-    <a href="http://localhost:2000/">Data Input Page(local testing)</a>
     
     <div id="buttonContainer">
         <canvas id="myChart"></canvas>
@@ -25,11 +23,25 @@
             <option value="Ben">Ben</option>
             <option value="Ollie">Ollie</option>
         </select>
-        <button class="dataSelectInputs" id="loadData" onclick="main()">Get It Boooooy</button>
+        <button class="dataSelectInputs" id="loadData" onclick="main()">Load Graph</button>
     </div>
 
     
-
+    <div id="menu">
+        <div id="menuItems">
+          <ul>
+            <li><a href="#">Daily Breakdown</a></li>
+            <li><a href="#">Monthly Breakdown</a></li>
+            <li><a href="#">About This Project</a></li>
+            <br><br>
+  
+            <p>© Daniel Cooper</p>
+          </ul>
+        </div>
+        <div id="menuOpenClose">
+          <p>></p>
+        </div>
+      </div>
     
 
     

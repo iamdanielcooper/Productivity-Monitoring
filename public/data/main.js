@@ -1,15 +1,13 @@
-  // Declare the chart  before it's used so It can be destroyed if it already has data in it. This stops the glitch where phantom graphs appear on hover.
-var myChart
+var myChart // Declaring the chart before it's used so It can be destroyed if it already has data in it. This stops the glitch where phantom graphs appear on hover.
 
 async function main() {
-  // this object is declared and passed to the server to search the database
-  const search = {};
+  
+  const search = {}; // this object is declared and passed to the server to search the database.
 
-  // IF a user has been specified it adds them to the search queery. If not it just adds the date.
   if (document.getElementById("users").value != "") {
-    search.user = document.getElementById("users").value;
+    search.user = document.getElementById("users").value; // If a user has been specified it adds them to the search params.
   }
-  search.date = document.getElementById("date").value;
+  search.date = document.getElementById("date").value; // Add the date the the search params.
 
   const options = {
     method: "POST",
@@ -22,42 +20,32 @@ async function main() {
   const response = await fetch("/find", options);
   const data = await response.json();
 
-  var totals = {
-    proofs: 0,
-    reproofs: 0,
-    multipage: 0,
-    multipageReproof: 0,
-    visuals: 0,
-    visualReproof: 0,
-    approvals: 0,
-    preapproved: 0,
-    outputs: 0,
-    other: 0,
-  };
+  var totals = {};
 
   // this parses the data from all entries into one object.
   for (let i = 0; i < data.length; i++) {
     for (const key in data[i]) {
-      if (key == "user" || key == "date" || key == "_id") {
-        continue;
+      if (!Number.isInteger(data[i][key])) { 
+        continue; // If it isn't a number skip adding it to the graph. This skips things like dates and names.
       } else {
-        totals[key] += data[i][key];
+        if (totals.key == undefined) { 
+          totals[key] = data[i][key]; // if it the key isn't in the object, initialise it.
+        } else {
+          totals[key] += data[i][key]; // if it is, add it to the total.
+        }
       }
     }
   }
 
-  //* This parses the label names.
-  totalsArr = [];
-  totalsArrLab = [];
+  
+  graphData = [];
+  graphDataLabels = [];
 
   for (const key in totals) {
-    totalsArr.push(totals[key]);
-    totalsArrLab.push(key);
+    graphData.push(totals[key]); // Put the total in one array
+    graphDataLabels.push(key.toUpperCase()); // Put the label in another array - Because Objects aren't indexed this guarantees accuracy.
   }
 
-  for (let i = 0; i < totalsArrLab.length; i++) {
-    totalsArrLab[i] = totalsArrLab[i].toUpperCase();
-  }
 
   //*  Loads graph into the GUI
 
@@ -70,11 +58,11 @@ async function main() {
   myChart = new Chart(ctx, {
     type: "pie",
     data: {
-      labels: totalsArrLab,
+      labels: graphDataLabels,
       datasets: [
         {
           label: "# of Votes",
-          data: totalsArr,
+          data: graphData,
           backgroundColor: [
             RGBAConvert(236, 122, 142, 100),
             RGBAConvert(240, 149, 165, 100),
@@ -150,5 +138,18 @@ function setDate() {
 function RGBAConvert(red, green, blue, opacity) {
   return `RGBA(${red},${green},${blue},${opacity / 100})`;
 }
+
+
+document.getElementById('menuOpenClose').addEventListener('click', (e) => {
+  let docRef = document.getElementById('menu')
+
+  if (docRef.style.left == '0px') {
+    docRef.style.left = '-250px'
+    document.getElementById('menuOpenClose').querySelector('p').innerText = '>'
+  } else {
+    docRef.style.left = '0px'
+    document.getElementById('menuOpenClose').querySelector('p').innerText = '<'
+  }
+})
 
 setDate();
