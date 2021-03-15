@@ -10,20 +10,17 @@ const objectItems = [
   'outputs',
   'other', 
   'breakdownIssues',
-  'Tigers',
-  'exampleWithThree',
-  'oneMoreExample'
+  'multipagePages'
 ]
 
 const holidays = {
-  xmascutoff: "22/12",
-  boxingDay: "24/12",
-  christmas: "25/12",
-  christmasBreak: "28/12",
-  christmasBreak2: "29/12",
-  christmasBreak3: "30/12",
-  christmasBreak5: "31/12",
-  newYearsDay: "1/1",
+  goodFriday: "2/4",
+  easterMonday: "5/4",
+  mayBankHoliday: "3/5",
+  springBankHoliday: "31/5",
+  summerBankHoliday: "30/8",
+  christmasDay: "25/12",
+  boxingDay: "28/12"
 };
 
 var output = {}; // initalise an empty object
@@ -231,7 +228,11 @@ function hideDataPullOnceUsed() {
 function startLoadLogging() {
   console.log('data now live')
   var myVar
-  myvar = setInterval(submit, 900000) // this updates the data at certain time intervals
+  myvar = setInterval(submit, minutesToMilliseconds(45)) // this updates the data at certain time intervals
+}
+
+function minutesToMilliseconds(input) {
+  return input * 6000
 }
 
 function addTimestamp() {
@@ -255,23 +256,35 @@ main()
 document.querySelectorAll('.button').forEach(item => {
   item.addEventListener('click', event => {
     
-
     let IDofCaller = event.target.parentNode.id // The ID of the parent is the name of what needs to be updated in the output object
-
     let docRef = document.getElementById(IDofCaller)
 
-    // 
     output[IDofCaller] = (event.target.className == 'button plus') ? output[IDofCaller] + 1 : output[IDofCaller] - 1
+
+
+
+    if ((IDofCaller == 'multipage' || IDofCaller == 'multipageReproof') && event.target.className == 'button plus') {
+      let pageCount = prompt('How many pages was your proof?') // Get value from user.
+      pageCount = (pageCount == '') ? 1 : pageCount // If they don't enter anything leave it as one.
+      output.multipagePages += parseInt(pageCount) // Update the Output object
+      document.getElementById('multipagePages').querySelector('.itemCount').innerText = output.multipagePages // Update the DOM
+
+    } else if ((IDofCaller == 'multipage' || IDofCaller == 'multipageReproof') && event.target.className == 'button minus') {
+      let pageCount = prompt('How many pages would you like to remove?')
+      pageCount = (pageCount == '') ? 1 : pageCount
+      output.multipagePages -= parseInt(pageCount)
+      document.getElementById('multipagePages').querySelector('.itemCount').innerText = output.multipagePages
+    }
+
+
+
 
     if (output[IDofCaller] < 0) {
       console.log('Err: Negative number entered')
       return
     }
 
-    console.log(output)
-
     docRef.querySelector('.itemCount').innerText = output[IDofCaller]
-
     docRef.querySelector('.timeStamp').innerText = addTimestamp()
   })
 })
@@ -306,3 +319,12 @@ document.getElementById('loadPreviousData').addEventListener('click', (e) => {
   }
 })
 
+// Add notes to the notes Pannel
+document.getElementById('addNote').addEventListener('click', (e) => {
+  if (output.notes == undefined) {
+    output.notes = prompt('Add Note:')
+  } else {
+    output.notes += ' ' + prompt('Add Node:')
+  }
+  document.getElementById('userNotes').innerText = output.notes
+})

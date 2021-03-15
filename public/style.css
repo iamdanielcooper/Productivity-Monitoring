@@ -235,17 +235,20 @@ img {
 }
 #menuOpenClose p {
   font-size: 40px;
+  color: white;
 }
 #menuItems {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
 }
-#loadPreviousData {
-  text-align: center;
+.lowerOptions {
   display: inline-block;
   text-align: center;
 }
-#loadPreviousData:hover {
+.lowerOptions:hover {
   cursor: pointer;
   color: #70a7c5;
+}
+#addNote {
+  text-align: left;
 }
