@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport", initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
@@ -20,32 +20,11 @@
 
       <canvas id="monthView"></canvas>
 
-      <select name="viewSelect" id="viewSelect">
-        <option value="" disabled="true" selected="true">
-          Select What To View
-        </option>
-        <option value="totalProofsAndReproofs">Total Proofs & Reproofs</option>
-        <option value="proofsV1">Proofs V1</option>
-        <option value="visualsV1">Visuals V1</option>
-        <option value="reproofs">Reproofs</option>
-        <option value="preApproved">Pre Approved</option>
-        <option value="outputs">Outputs</option>
+      <select name="" id="">
+        <option value="">Month</option>
       </select>
-
-      <select name="selectMonth" id="selectMonth">
-        <option value="" disabled="true" selected="true">Select Month</option>
-        <option value="01">January</option>
-        <option value="02">February</option>
-        <option value="03">March</option>
-        <option value="04">April</option>
-        <option value="05">May</option>
-        <option value="06">June</option>
-        <option value="07">July</option>
-        <option value="08">August</option>
-        <option value="09">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
+      <select name="" id="">
+        <option value="">Year</option>
       </select>
 
       <label for="proofs">Proofs</label>
@@ -53,17 +32,10 @@
       <br />
       <label for="things">Things</label>
       <input type="checkbox" name="things" id="things" />
+      <!-- dynamically generate checkboxes -->
 
-      <button
-        type="button"
-        hidden="true"
-        id="loadGraphButton"
-        onclick="loadMonthData()"
-      >
-        Load Graph
-      </button>
     </div>
 
-    <script src="/dataoverview.js"></script>
+    <script src="/subpages/dataoverview.js"></script>
   </body>
 </html>

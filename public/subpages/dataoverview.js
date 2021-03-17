@@ -4,20 +4,22 @@ var chart
 
 async function loadMonthData() {
  
-  let selectedMonth = document.getElementById("selectMonth").value;
-
-  search = {};
-
+  // Get all the data from the database
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(search),
+    body: JSON.stringify(),
   };
 
   const response = await fetch("/reg", options);
   const data = await response.json();
+
+
+  let selectedMonth = '03';
+
+  
 
   let monthRegexString = `\\d+-${selectedMonth}-\\d+`;
 
@@ -38,7 +40,8 @@ async function loadMonthData() {
   }
 
   //* Get the value of the selected and switch the the correct array
-  let viewSelected = document.getElementById('viewSelect').value
+
+  let viewSelected = 'totalProofsAndReproofs' //! hard coded Change.
 
   let arrayCheck
 
@@ -220,6 +223,5 @@ function turnOnButton() {
   return
 }
 
-// Event Listeners to load the graph load button once both elements are selected.
-document.getElementById('selectMonth').addEventListener('change', turnOnButton)
-document.getElementById('viewSelect').addEventListener('change', turnOnButton)
+
+loadMonthData()

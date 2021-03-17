@@ -319,7 +319,7 @@ document.getElementById('loadPreviousData').addEventListener('click', (e) => {
   }
 })
 
-// Add notes to the notes Pannel
+// Add notes to the notes Panel
 document.getElementById('addNote').addEventListener('click', (e) => {
   if (output.notes == undefined) {
     output.notes = prompt('Add Note:')
