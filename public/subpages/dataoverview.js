@@ -3,6 +3,87 @@ var data = []; // make the data global so all functions can accsess
 var arrayCheck = []
 
 //* Main Function *//
+async function loadMonthData() {
+
+  /*
+  // Get all the data from the database
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(),
+  };
+
+  const response = await fetch("/reg", options);
+  data = await response.json();
+  */
+
+  data = [
+    {
+      proofs: "20",
+      approvals: "10",
+      outputs: "12",
+      user: "Dan",
+      date: "2021-03-16",
+    },
+    {
+      proofs: "10",
+      approvals: "15",
+      outputs: "5",
+      user: "Ollie",
+      date: "2020-12-17",
+    },
+    {
+      proofs: "25",
+      approvals: "15",
+      outputs: "0",
+      Test: '3',
+      user: "Bex",
+      date: "2021-03-17",
+    },
+    {
+      proofs: "11",
+      approvals: "2",
+      outputs: "3",
+      user: "Ben",
+      date: "2021-03-18",
+    },
+    {
+      proofs: "26",
+      approvals: "9",
+      outputs: "20",
+      user: "Dan",
+      date: "1997-02-18",
+    },
+  ];
+
+  const uniqueMonthsAndYears = getMonthsAndYears(data);
+
+  const monthsForDisplay = uniqueMonthsAndYears.months.sort((a, b) => a - b);
+  const yearsForDisplay = uniqueMonthsAndYears.years.sort((a, b) => a - b);
+
+  // put the month and years into the DOM.
+
+  createDropdowns(monthsForDisplay, "months");
+  createDropdowns(yearsForDisplay, "years");
+  CreateCheckboxes(data)
+
+  document.getElementById("months").addEventListener("change", (e) => {
+    loadGraph();
+  });
+  
+  document.getElementById("years").addEventListener("change", (e) => {
+    loadGraph();
+  });
+  
+  document.querySelectorAll('input').forEach(item => {
+    item.addEventListener('click', event => {
+      addToViewSelect(event.target.id)
+    })
+  })
+  
+}
 
 async function loadGraph() {
   let selectedMonth = document.getElementById("months").value;
@@ -88,10 +169,14 @@ async function loadGraph() {
   let average = averageTotal / (finalData.length - 1);
 
   for (let i = 0; i < finalData.length; i++) {
-    averageArray.push(average);
+    averageArray.push(Math.ceil(average));
   }
 
-  //* Render Graph
+
+ 
+  if (average == 0) {
+    return // Don't bother loading the graph if there's not data. 
+  }
 
   var ctx = document.getElementById("monthView").getContext("2d");
 
@@ -156,27 +241,14 @@ function isInArray(arr, item) {
   return false;
 }
 
-// Pass the array and the colour you want. It will make an array of colours long enough for the full arrays
 function getFullColourArray(arr, colour) {
+  // Pass the array and the colour you want. It will make an array of colours long enough for the full arrays
   let output = [];
 
   for (let i = 0; i < arr.length; i++) {
     output.push(colour);
   }
   return output;
-}
-
-function turnOnButton() {
-  let objectRef = document.getElementById("loadGraphButton");
-
-  if (
-    objectRef.hidden == true &&
-    document.getElementById("selectMonth").value != "" &&
-    document.getElementById("viewSelect").value != ""
-  ) {
-    objectRef.hidden = false;
-  }
-  return;
 }
 
 function getMonthsAndYears(data) {
@@ -217,100 +289,21 @@ function getMonthsAndYears(data) {
   return output;
 }
 
-async function loadMonthData() {
-
-  
-  // Get all the data from the database
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(),
-  };
-
-  const response = await fetch("/reg", options);
-  data = await response.json();
-  
-/*
-  data = [
-    {
-      proofs: "20",
-      approvals: "10",
-      outputs: "12",
-      user: "Dan",
-      date: "2021-03-16",
-    },
-    {
-      proofs: "10",
-      approvals: "15",
-      outputs: "5",
-      user: "Ollie",
-      date: "2020-12-17",
-    },
-    {
-      proofs: "25",
-      approvals: "15",
-      outputs: "0",
-      Test: '3',
-      user: "Bex",
-      date: "2021-03-17",
-    },
-    {
-      proofs: "11",
-      approvals: "2",
-      outputs: "3",
-      user: "Ben",
-      date: "2021-03-18",
-    },
-    {
-      proofs: "26",
-      approvals: "9",
-      outputs: "20",
-      user: "Dan",
-      date: "1997-02-18",
-    },
-  ];
-*/
-  const uniqueMonthsAndYears = getMonthsAndYears(data);
-
-  const monthsForDisplay = uniqueMonthsAndYears.months.sort((a, b) => a - b);
-  const yearsForDisplay = uniqueMonthsAndYears.years.sort((a, b) => a - b);
-
-  // put the month and years into the DOM.
-
-  createDropdowns(monthsForDisplay, "months");
-  createDropdowns(yearsForDisplay, "years");
-  CreateCheckboxes(data)
-
-  document.getElementById("months").addEventListener("change", (e) => {
-    loadGraph();
-  });
-  
-  document.getElementById("years").addEventListener("change", (e) => {
-    loadGraph();
-  });
-  
-  document.querySelectorAll('input').forEach(item => {
-    item.addEventListener('click', event => {
-      addToViewSelect(event.target.id)
-    })
-  })
-  
-}
-
 function addToViewSelect(item) {
   // If it's not in the list add it.
   if (arrayCheck.indexOf(item) == -1) {
       arrayCheck.push(item)
+      loadGraph()
   } else {
     // if it is remove it.
     let index = arrayCheck.indexOf(item)
     arrayCheck.splice(index, 1)
+    loadGraph()
   }
-  console.log(arrayCheck)
   loadGraph()
 }
+
+//* Create DOM Elements *//
 
 function CreateCheckboxes(arrOfObj) {
   // First make an array of unique keys
@@ -327,27 +320,29 @@ function CreateCheckboxes(arrOfObj) {
       }
     }
   }
-  console.log(uniqueKeys);
+  
 
   //======= making the checkBoxes
 
   for (let i = 0; i < uniqueKeys.length; i++) {
-    let tempDropdownLabel = document.createElement('label')
-    let tempDropdown = document.createElement('input')
-    tempDropdown.type = 'checkbox'
-    tempDropdown.id = uniqueKeys[i]
-    tempDropdownLabel.id = uniqueKeys[i]
-    tempDropdown.value = uniqueKeys[i]
-    tempDropdownLabel.innerText = uniqueKeys[i]
+    let tempCheckboxLabel = document.createElement('label')
+    let tempCheckbox = document.createElement('input')
+    tempCheckbox.type = 'checkbox'
+    tempCheckbox.id = uniqueKeys[i]
+    tempCheckbox.className = 'checkbox'
+    tempCheckboxLabel.id = uniqueKeys[i]
+    tempCheckboxLabel.className = 'checkboxLabel'
+    tempCheckbox.value = uniqueKeys[i]
+    tempCheckboxLabel.innerText = uniqueKeys[i]
 
-    document.getElementById('main').appendChild(tempDropdownLabel)
-    document.getElementById('main').appendChild(tempDropdown)
+    document.getElementById('CheckboxDiv').appendChild(tempCheckboxLabel)
+    document.getElementById('CheckboxDiv').appendChild(tempCheckbox)
   } 
 
 }
 
 function createDropdowns(dataArray, name) {
-  const docRef = document.getElementById("main");
+  const docRef = document.getElementById("dateSelectionDiv");
   let select = document.createElement("select");
   select.id = name;
 
@@ -362,7 +357,6 @@ function createDropdowns(dataArray, name) {
 
   // This creates the  options for each element in the array.
   dataArray.forEach((element) => {
-    console.log(element);
     let option = document.createElement("option");
     option.value = element;
     option.innerText = element;
@@ -371,9 +365,20 @@ function createDropdowns(dataArray, name) {
   docRef.appendChild(select); // add the dropdown to the DOM
 }
 
+//* Event Listeners *//
+
+document.getElementById('menuOpenClose').addEventListener('click', (e) => {
+  let docRef = document.getElementById('menu')
+
+  if (docRef.style.left == '0px') {
+    docRef.style.left = '-250px'
+    document.getElementById('menuOpenClose').querySelector('p').innerText = '>'
+  } else {
+    docRef.style.left = '0px'
+    document.getElementById('menuOpenClose').querySelector('p').innerText = '<'
+  }
+})
+
+
 // First it loads in the data and makes the dropdowns
 loadMonthData();
-
-
-
-

@@ -163,6 +163,7 @@ async function getLoggedData() {
   // the date used for this is always the current date.
   search.user = document.getElementById("dataPullSelect").value;
   search.date = getDate();
+  search.pass = prompt('passcode')
 
   const options = {
     method: "POST",

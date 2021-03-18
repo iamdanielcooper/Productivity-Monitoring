@@ -78,6 +78,8 @@ body {
   display: block;
   text-align: center;
   margin-top: 25px;
+  position: relative;
+  bottom: 70px;
 }
 
 #header {
@@ -242,6 +244,8 @@ img {
   grid-row: 1 / span 1;
 }
 .lowerOptions {
+  position: relative;
+  bottom: 40px;
   display: inline-block;
   text-align: center;
 }
@@ -251,4 +255,16 @@ img {
 }
 #addNote {
   text-align: left;
+}
+.checkbox {
+  margin: 10px 20px 10px 5px;
+}
+.checkboxLabel {
+  margin: auto auto auto auto;
+}
+#CheckboxDiv {
+  display: block;
+}
+#dateSelectionDiv {
+  display: block;
 }
