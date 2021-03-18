@@ -217,9 +217,9 @@ function getMonthsAndYears(data) {
   return output;
 }
 
-function loadMonthData() {
+async function loadMonthData() {
 
-  /*
+  
   // Get all the data from the database
   const options = {
     method: "POST",
@@ -231,8 +231,8 @@ function loadMonthData() {
 
   const response = await fetch("/reg", options);
   data = await response.json();
-  */
-
+  
+/*
   data = [
     {
       proofs: "20",
@@ -271,7 +271,7 @@ function loadMonthData() {
       date: "1997-02-18",
     },
   ];
-
+*/
   const uniqueMonthsAndYears = getMonthsAndYears(data);
 
   const monthsForDisplay = uniqueMonthsAndYears.months.sort((a, b) => a - b);
@@ -282,6 +282,21 @@ function loadMonthData() {
   createDropdowns(monthsForDisplay, "months");
   createDropdowns(yearsForDisplay, "years");
   CreateCheckboxes(data)
+
+  document.getElementById("months").addEventListener("change", (e) => {
+    loadGraph();
+  });
+  
+  document.getElementById("years").addEventListener("change", (e) => {
+    loadGraph();
+  });
+  
+  document.querySelectorAll('input').forEach(item => {
+    item.addEventListener('click', event => {
+      addToViewSelect(event.target.id)
+    })
+  })
+  
 }
 
 function addToViewSelect(item) {
@@ -361,16 +376,4 @@ loadMonthData();
 
 
 
-document.getElementById("months").addEventListener("change", (e) => {
-  loadGraph();
-});
-document.getElementById("years").addEventListener("change", (e) => {
-  loadGraph();
-});
-
-document.querySelectorAll('input').forEach(item => {
-  item.addEventListener('click', event => {
-    addToViewSelect(event.target.id)
-  })
-})
 
