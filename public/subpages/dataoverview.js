@@ -5,7 +5,7 @@ var arrayCheck = []
 //* Main Function *//
 async function loadMonthData() {
 
-  /*
+  
   // Get all the data from the database
   const options = {
     method: "POST",
@@ -17,8 +17,8 @@ async function loadMonthData() {
 
   const response = await fetch("/reg", options);
   data = await response.json();
-  */
-
+  
+  /*
   data = [
     {
       proofs: "20",
@@ -57,7 +57,7 @@ async function loadMonthData() {
       date: "1997-02-18",
     },
   ];
-
+*/
   const uniqueMonthsAndYears = getMonthsAndYears(data);
 
   const monthsForDisplay = uniqueMonthsAndYears.months.sort((a, b) => a - b);

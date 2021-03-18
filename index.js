@@ -26,40 +26,10 @@ app.listen(process.env.PORT || 3000, () => {
 
 app.post('/find', async (req, res) => {
     const db = mongojs(uri, ['artwork-data'])
-
-    switch (req.body.user) {
-        case 'Dan':
-            var correctLoggin = (req.body.pass == process.env.DAN) ? true : false
-            break;
-        case 'Bex':
-            var correctLoggin = (req.body.pass == process.env.BEX) ? true : false
-            break;
-        case 'Ollie':
-            var correctLoggin = (req.body.pass == process.env.OLLIE) ? true : false
-            break;
-        case 'Ben':
-            var correctLoggin = (req.body.pass == process.env.BEN) ? true : false
-            break;
-        default:
-            break;
-    }
-
-    delete req.body.pass // remove the pass from the object.
-
-    console.log(correctLoggin)
-
-    if (correctLoggin) {
-        db.workload.find(req.body, function (err, docs) {
+            db.workload.find(req.body, function (err, docs) {
             res.json(docs) // send back the documents that are found
             console.log(docs)
     })
-    } else {
-        res.send('error')
-        
-    }
-    
-
-
   })
 
   
