@@ -22,13 +22,15 @@ async function main() {
 
   var totals = {};
 
+  console.log(data)
+
   // this parses the data from all entries into one object.
   for (let i = 0; i < data.length; i++) {
     for (const key in data[i]) {
       if (!Number.isInteger(data[i][key])) { 
         continue; // If it isn't a number skip adding it to the graph. This skips things like dates and names.
       } else {
-        if (totals.key == undefined) { 
+        if (totals[key] == undefined) { 
           totals[key] = data[i][key]; // if it the key isn't in the object, initialise it.
         } else {
           totals[key] += data[i][key]; // if it is, add it to the total.
@@ -36,7 +38,6 @@ async function main() {
       }
     }
   }
-
   
   graphData = [];
   graphDataLabels = [];
