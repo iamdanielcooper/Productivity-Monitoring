@@ -113,7 +113,8 @@ function submit() {
   fetch("/api", options);
   console.log("Success");
 
-  addTimestamp()
+  document.getElementById('submitTimestamp').innerText = `Last Submit: ${addTimestamp()}` 
+  
 }
 
 function getCurrentDateDDMM(days) {
