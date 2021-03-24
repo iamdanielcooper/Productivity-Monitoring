@@ -22,7 +22,7 @@ async function main() {
 
   var totals = {};
 
-  console.log(data)
+ 
 
   // this parses the data from all entries into one object.
   for (let i = 0; i < data.length; i++) {
