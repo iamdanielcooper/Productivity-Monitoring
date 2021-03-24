@@ -12,7 +12,7 @@ const app = express()
 app.use(express.json());
 app.use(express.static('public'))
 
-uri = process.env.KEY
+
 
 
 
@@ -25,7 +25,7 @@ app.listen(process.env.PORT || 3000, () => {
 
 
 app.post('/find', async (req, res) => {
-    const db = mongojs(uri, ['artwork-data'])
+    const db = mongojs(process.env.KEY, ['artwork-data'])
             db.workload.find(req.body, function (err, docs) {
             res.json(docs) // send back the documents that are found
             console.log(docs)
@@ -50,7 +50,7 @@ app.post('/api', (request, response) => {
 
 
 async function findInDB(input) {
-    const uri = uri;
+    const uri = process.env.KEY;
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
     await client.connect()
@@ -78,7 +78,7 @@ async function findInDB(input) {
 async function insertToDB(input, search) {
 
     // Generic DB access protocol
-    const uri = uri;
+    const uri = process.env.KEY;
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
     await client.connect()
@@ -107,7 +107,7 @@ async function insertToDB(input, search) {
 
 
 async function removeFromDB(search) {
-    const uri = uri;
+    const uri = process.env.KEY;
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
     await client.connect()
@@ -123,7 +123,7 @@ async function removeFromDB(search) {
 }
 
 async function findInDBForGraph(input) {
-    const uri = uri;
+    const uri = process.env.KEY;
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
     await client.connect()
@@ -142,7 +142,7 @@ async function findInDBForGraph(input) {
 
 // find regex
 app.post('/reg', async (req, res) => {
-    const db = mongojs(uri, ['artwork-data'])
+    const db = mongojs(process.env.KEY, ['artwork-data'])
 
     let search = req.body
     
