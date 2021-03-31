@@ -266,12 +266,18 @@ document.querySelectorAll('.button').forEach(item => {
 
     if ((IDofCaller == 'multipage' || IDofCaller == 'multipageReproof') && event.target.className == 'button plus') {
       let pageCount = prompt('How many pages was your proof?') // Get value from user.
+      if (pageCount == null) {
+        return
+      }
       pageCount = (pageCount == '') ? 1 : pageCount // If they don't enter anything leave it as one.
       output.multipagePages += parseInt(pageCount) // Update the Output object
       document.getElementById('multipagePages').querySelector('.itemCount').innerText = output.multipagePages // Update the DOM
 
     } else if ((IDofCaller == 'multipage' || IDofCaller == 'multipageReproof') && event.target.className == 'button minus') {
       let pageCount = prompt('How many pages would you like to remove?')
+      if (pageCount == null) {
+        return
+      }
       pageCount = (pageCount == '') ? 1 : pageCount
       output.multipagePages -= parseInt(pageCount)
       document.getElementById('multipagePages').querySelector('.itemCount').innerText = output.multipagePages
